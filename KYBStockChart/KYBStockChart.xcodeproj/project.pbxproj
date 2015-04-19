@@ -1,0 +1,523 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FD4963781AE3F66300C7E21F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FD4963771AE3F66300C7E21F /* main.m */; };
+		FD49637B1AE3F66300C7E21F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FD49637A1AE3F66300C7E21F /* AppDelegate.m */; };
+		FD49637E1AE3F66300C7E21F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD49637D1AE3F66300C7E21F /* ViewController.m */; };
+		FD4963811AE3F66300C7E21F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD49637F1AE3F66300C7E21F /* Main.storyboard */; };
+		FD4963831AE3F66300C7E21F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD4963821AE3F66300C7E21F /* Images.xcassets */; };
+		FD4963861AE3F66300C7E21F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD4963841AE3F66300C7E21F /* LaunchScreen.xib */; };
+		FD4963921AE3F66300C7E21F /* KYBStockChartTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FD4963911AE3F66300C7E21F /* KYBStockChartTests.m */; };
+		FD4963B31AE3F6B100C7E21F /* KYBStockBaseChart.m in Sources */ = {isa = PBXBuildFile; fileRef = FD49639E1AE3F6B100C7E21F /* KYBStockBaseChart.m */; };
+		FD4963B41AE3F6B100C7E21F /* KYBStockKCandleChat.m in Sources */ = {isa = PBXBuildFile; fileRef = FD4963A01AE3F6B100C7E21F /* KYBStockKCandleChat.m */; };
+		FD4963B51AE3F6B100C7E21F /* KYBStockTrendChart.m in Sources */ = {isa = PBXBuildFile; fileRef = FD4963A21AE3F6B100C7E21F /* KYBStockTrendChart.m */; };
+		FD4963B61AE3F6B100C7E21F /* KYBStockVolumeChart.m in Sources */ = {isa = PBXBuildFile; fileRef = FD4963A41AE3F6B100C7E21F /* KYBStockVolumeChart.m */; };
+		FD4963B71AE3F6B100C7E21F /* DataCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = FD4963A71AE3F6B100C7E21F /* DataCommon.m */; };
+		FD4963B81AE3F6B100C7E21F /* KYBStockChartCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = FD4963A91AE3F6B100C7E21F /* KYBStockChartCommon.m */; };
+		FD4963B91AE3F6B100C7E21F /* NSString+UILabel.m in Sources */ = {isa = PBXBuildFile; fileRef = FD4963AB1AE3F6B100C7E21F /* NSString+UILabel.m */; };
+		FD4963BA1AE3F6B100C7E21F /* KCandleEnitity.m in Sources */ = {isa = PBXBuildFile; fileRef = FD4963AE1AE3F6B100C7E21F /* KCandleEnitity.m */; };
+		FD4963BB1AE3F6B100C7E21F /* KYBChartLineEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = FD4963B01AE3F6B100C7E21F /* KYBChartLineEntity.m */; };
+		FD4963BC1AE3F6B100C7E21F /* TSMAEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = FD4963B21AE3F6B100C7E21F /* TSMAEntity.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FD49638C1AE3F66300C7E21F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FD49636A1AE3F66300C7E21F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FD4963711AE3F66300C7E21F;
+			remoteInfo = KYBStockChart;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		FD4963721AE3F66300C7E21F /* KYBStockChart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KYBStockChart.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD4963761AE3F66300C7E21F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FD4963771AE3F66300C7E21F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		FD4963791AE3F66300C7E21F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		FD49637A1AE3F66300C7E21F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		FD49637C1AE3F66300C7E21F /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		FD49637D1AE3F66300C7E21F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		FD4963801AE3F66300C7E21F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FD4963821AE3F66300C7E21F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		FD4963851AE3F66300C7E21F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		FD49638B1AE3F66300C7E21F /* KYBStockChartTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KYBStockChartTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD4963901AE3F66300C7E21F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FD4963911AE3F66300C7E21F /* KYBStockChartTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KYBStockChartTests.m; sourceTree = "<group>"; };
+		FD49639D1AE3F6B100C7E21F /* KYBStockBaseChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KYBStockBaseChart.h; sourceTree = "<group>"; };
+		FD49639E1AE3F6B100C7E21F /* KYBStockBaseChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KYBStockBaseChart.m; sourceTree = "<group>"; };
+		FD49639F1AE3F6B100C7E21F /* KYBStockKCandleChat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KYBStockKCandleChat.h; sourceTree = "<group>"; };
+		FD4963A01AE3F6B100C7E21F /* KYBStockKCandleChat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KYBStockKCandleChat.m; sourceTree = "<group>"; };
+		FD4963A11AE3F6B100C7E21F /* KYBStockTrendChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KYBStockTrendChart.h; sourceTree = "<group>"; };
+		FD4963A21AE3F6B100C7E21F /* KYBStockTrendChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KYBStockTrendChart.m; sourceTree = "<group>"; };
+		FD4963A31AE3F6B100C7E21F /* KYBStockVolumeChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KYBStockVolumeChart.h; sourceTree = "<group>"; };
+		FD4963A41AE3F6B100C7E21F /* KYBStockVolumeChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KYBStockVolumeChart.m; sourceTree = "<group>"; };
+		FD4963A61AE3F6B100C7E21F /* DataCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataCommon.h; sourceTree = "<group>"; };
+		FD4963A71AE3F6B100C7E21F /* DataCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataCommon.m; sourceTree = "<group>"; };
+		FD4963A81AE3F6B100C7E21F /* KYBStockChartCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KYBStockChartCommon.h; sourceTree = "<group>"; };
+		FD4963A91AE3F6B100C7E21F /* KYBStockChartCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KYBStockChartCommon.m; sourceTree = "<group>"; };
+		FD4963AA1AE3F6B100C7E21F /* NSString+UILabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+UILabel.h"; sourceTree = "<group>"; };
+		FD4963AB1AE3F6B100C7E21F /* NSString+UILabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+UILabel.m"; sourceTree = "<group>"; };
+		FD4963AD1AE3F6B100C7E21F /* KCandleEnitity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCandleEnitity.h; sourceTree = "<group>"; };
+		FD4963AE1AE3F6B100C7E21F /* KCandleEnitity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCandleEnitity.m; sourceTree = "<group>"; };
+		FD4963AF1AE3F6B100C7E21F /* KYBChartLineEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KYBChartLineEntity.h; sourceTree = "<group>"; };
+		FD4963B01AE3F6B100C7E21F /* KYBChartLineEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KYBChartLineEntity.m; sourceTree = "<group>"; };
+		FD4963B11AE3F6B100C7E21F /* TSMAEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSMAEntity.h; sourceTree = "<group>"; };
+		FD4963B21AE3F6B100C7E21F /* TSMAEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSMAEntity.m; sourceTree = "<group>"; };
+		FD4963BD1AE3F6D200C7E21F /* KYBStockChart-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KYBStockChart-Prefix.pch"; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FD49636F1AE3F66300C7E21F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FD4963881AE3F66300C7E21F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FD4963691AE3F66300C7E21F = {
+			isa = PBXGroup;
+			children = (
+				FD4963741AE3F66300C7E21F /* KYBStockChart */,
+				FD49638E1AE3F66300C7E21F /* KYBStockChartTests */,
+				FD4963731AE3F66300C7E21F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FD4963731AE3F66300C7E21F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FD4963721AE3F66300C7E21F /* KYBStockChart.app */,
+				FD49638B1AE3F66300C7E21F /* KYBStockChartTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FD4963741AE3F66300C7E21F /* KYBStockChart */ = {
+			isa = PBXGroup;
+			children = (
+				FD49639B1AE3F6B100C7E21F /* chart */,
+				FD4963791AE3F66300C7E21F /* AppDelegate.h */,
+				FD49637A1AE3F66300C7E21F /* AppDelegate.m */,
+				FD49637C1AE3F66300C7E21F /* ViewController.h */,
+				FD49637D1AE3F66300C7E21F /* ViewController.m */,
+				FD49637F1AE3F66300C7E21F /* Main.storyboard */,
+				FD4963821AE3F66300C7E21F /* Images.xcassets */,
+				FD4963841AE3F66300C7E21F /* LaunchScreen.xib */,
+				FD4963751AE3F66300C7E21F /* Supporting Files */,
+			);
+			path = KYBStockChart;
+			sourceTree = "<group>";
+		};
+		FD4963751AE3F66300C7E21F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FD4963BD1AE3F6D200C7E21F /* KYBStockChart-Prefix.pch */,
+				FD4963761AE3F66300C7E21F /* Info.plist */,
+				FD4963771AE3F66300C7E21F /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FD49638E1AE3F66300C7E21F /* KYBStockChartTests */ = {
+			isa = PBXGroup;
+			children = (
+				FD4963911AE3F66300C7E21F /* KYBStockChartTests.m */,
+				FD49638F1AE3F66300C7E21F /* Supporting Files */,
+			);
+			path = KYBStockChartTests;
+			sourceTree = "<group>";
+		};
+		FD49638F1AE3F66300C7E21F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FD4963901AE3F66300C7E21F /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FD49639B1AE3F6B100C7E21F /* chart */ = {
+			isa = PBXGroup;
+			children = (
+				FD49639C1AE3F6B100C7E21F /* Chart */,
+				FD4963A51AE3F6B100C7E21F /* Common */,
+				FD4963AC1AE3F6B100C7E21F /* Entity */,
+			);
+			path = chart;
+			sourceTree = "<group>";
+		};
+		FD49639C1AE3F6B100C7E21F /* Chart */ = {
+			isa = PBXGroup;
+			children = (
+				FD49639D1AE3F6B100C7E21F /* KYBStockBaseChart.h */,
+				FD49639E1AE3F6B100C7E21F /* KYBStockBaseChart.m */,
+				FD49639F1AE3F6B100C7E21F /* KYBStockKCandleChat.h */,
+				FD4963A01AE3F6B100C7E21F /* KYBStockKCandleChat.m */,
+				FD4963A11AE3F6B100C7E21F /* KYBStockTrendChart.h */,
+				FD4963A21AE3F6B100C7E21F /* KYBStockTrendChart.m */,
+				FD4963A31AE3F6B100C7E21F /* KYBStockVolumeChart.h */,
+				FD4963A41AE3F6B100C7E21F /* KYBStockVolumeChart.m */,
+			);
+			path = Chart;
+			sourceTree = "<group>";
+		};
+		FD4963A51AE3F6B100C7E21F /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				FD4963A61AE3F6B100C7E21F /* DataCommon.h */,
+				FD4963A71AE3F6B100C7E21F /* DataCommon.m */,
+				FD4963A81AE3F6B100C7E21F /* KYBStockChartCommon.h */,
+				FD4963A91AE3F6B100C7E21F /* KYBStockChartCommon.m */,
+				FD4963AA1AE3F6B100C7E21F /* NSString+UILabel.h */,
+				FD4963AB1AE3F6B100C7E21F /* NSString+UILabel.m */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		FD4963AC1AE3F6B100C7E21F /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				FD4963AD1AE3F6B100C7E21F /* KCandleEnitity.h */,
+				FD4963AE1AE3F6B100C7E21F /* KCandleEnitity.m */,
+				FD4963AF1AE3F6B100C7E21F /* KYBChartLineEntity.h */,
+				FD4963B01AE3F6B100C7E21F /* KYBChartLineEntity.m */,
+				FD4963B11AE3F6B100C7E21F /* TSMAEntity.h */,
+				FD4963B21AE3F6B100C7E21F /* TSMAEntity.m */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FD4963711AE3F66300C7E21F /* KYBStockChart */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FD4963951AE3F66300C7E21F /* Build configuration list for PBXNativeTarget "KYBStockChart" */;
+			buildPhases = (
+				FD49636E1AE3F66300C7E21F /* Sources */,
+				FD49636F1AE3F66300C7E21F /* Frameworks */,
+				FD4963701AE3F66300C7E21F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KYBStockChart;
+			productName = KYBStockChart;
+			productReference = FD4963721AE3F66300C7E21F /* KYBStockChart.app */;
+			productType = "com.apple.product-type.application";
+		};
+		FD49638A1AE3F66300C7E21F /* KYBStockChartTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FD4963981AE3F66300C7E21F /* Build configuration list for PBXNativeTarget "KYBStockChartTests" */;
+			buildPhases = (
+				FD4963871AE3F66300C7E21F /* Sources */,
+				FD4963881AE3F66300C7E21F /* Frameworks */,
+				FD4963891AE3F66300C7E21F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FD49638D1AE3F66300C7E21F /* PBXTargetDependency */,
+			);
+			name = KYBStockChartTests;
+			productName = KYBStockChartTests;
+			productReference = FD49638B1AE3F66300C7E21F /* KYBStockChartTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FD49636A1AE3F66300C7E21F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = zhb1991nm;
+				TargetAttributes = {
+					FD4963711AE3F66300C7E21F = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					FD49638A1AE3F66300C7E21F = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = FD4963711AE3F66300C7E21F;
+					};
+				};
+			};
+			buildConfigurationList = FD49636D1AE3F66300C7E21F /* Build configuration list for PBXProject "KYBStockChart" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FD4963691AE3F66300C7E21F;
+			productRefGroup = FD4963731AE3F66300C7E21F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FD4963711AE3F66300C7E21F /* KYBStockChart */,
+				FD49638A1AE3F66300C7E21F /* KYBStockChartTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FD4963701AE3F66300C7E21F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FD4963811AE3F66300C7E21F /* Main.storyboard in Resources */,
+				FD4963861AE3F66300C7E21F /* LaunchScreen.xib in Resources */,
+				FD4963831AE3F66300C7E21F /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FD4963891AE3F66300C7E21F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FD49636E1AE3F66300C7E21F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FD4963BB1AE3F6B100C7E21F /* KYBChartLineEntity.m in Sources */,
+				FD4963B91AE3F6B100C7E21F /* NSString+UILabel.m in Sources */,
+				FD4963B51AE3F6B100C7E21F /* KYBStockTrendChart.m in Sources */,
+				FD49637E1AE3F66300C7E21F /* ViewController.m in Sources */,
+				FD4963B71AE3F6B100C7E21F /* DataCommon.m in Sources */,
+				FD4963B31AE3F6B100C7E21F /* KYBStockBaseChart.m in Sources */,
+				FD4963BA1AE3F6B100C7E21F /* KCandleEnitity.m in Sources */,
+				FD4963BC1AE3F6B100C7E21F /* TSMAEntity.m in Sources */,
+				FD4963B81AE3F6B100C7E21F /* KYBStockChartCommon.m in Sources */,
+				FD4963B41AE3F6B100C7E21F /* KYBStockKCandleChat.m in Sources */,
+				FD49637B1AE3F66300C7E21F /* AppDelegate.m in Sources */,
+				FD4963781AE3F66300C7E21F /* main.m in Sources */,
+				FD4963B61AE3F6B100C7E21F /* KYBStockVolumeChart.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FD4963871AE3F66300C7E21F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FD4963921AE3F66300C7E21F /* KYBStockChartTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FD49638D1AE3F66300C7E21F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FD4963711AE3F66300C7E21F /* KYBStockChart */;
+			targetProxy = FD49638C1AE3F66300C7E21F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		FD49637F1AE3F66300C7E21F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FD4963801AE3F66300C7E21F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		FD4963841AE3F66300C7E21F /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FD4963851AE3F66300C7E21F /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FD4963931AE3F66300C7E21F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		FD4963941AE3F66300C7E21F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FD4963961AE3F66300C7E21F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "KYBStockChart/KYBStockChart-Prefix.pch";
+				INFOPLIST_FILE = KYBStockChart/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		FD4963971AE3F66300C7E21F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "KYBStockChart/KYBStockChart-Prefix.pch";
+				INFOPLIST_FILE = KYBStockChart/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		FD4963991AE3F66300C7E21F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = KYBStockChartTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KYBStockChart.app/KYBStockChart";
+			};
+			name = Debug;
+		};
+		FD49639A1AE3F66300C7E21F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = KYBStockChartTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KYBStockChart.app/KYBStockChart";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FD49636D1AE3F66300C7E21F /* Build configuration list for PBXProject "KYBStockChart" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FD4963931AE3F66300C7E21F /* Debug */,
+				FD4963941AE3F66300C7E21F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FD4963951AE3F66300C7E21F /* Build configuration list for PBXNativeTarget "KYBStockChart" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FD4963961AE3F66300C7E21F /* Debug */,
+				FD4963971AE3F66300C7E21F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		FD4963981AE3F66300C7E21F /* Build configuration list for PBXNativeTarget "KYBStockChartTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FD4963991AE3F66300C7E21F /* Debug */,
+				FD49639A1AE3F66300C7E21F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FD49636A1AE3F66300C7E21F /* Project object */;
+}
