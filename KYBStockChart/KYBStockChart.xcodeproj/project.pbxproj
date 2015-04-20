@@ -37,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FD1E900F1AE53EAC00BFAC7E /* KYBStockChart-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KYBStockChart-Prefix.pch"; sourceTree = "<group>"; };
 		FD4963721AE3F66300C7E21F /* KYBStockChart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KYBStockChart.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD4963761AE3F66300C7E21F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FD4963771AE3F66300C7E21F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -70,7 +71,6 @@
 		FD4963B01AE3F6B100C7E21F /* KYBChartLineEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KYBChartLineEntity.m; sourceTree = "<group>"; };
 		FD4963B11AE3F6B100C7E21F /* TSMAEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSMAEntity.h; sourceTree = "<group>"; };
 		FD4963B21AE3F6B100C7E21F /* TSMAEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSMAEntity.m; sourceTree = "<group>"; };
-		FD4963BD1AE3F6D200C7E21F /* KYBStockChart-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KYBStockChart-Prefix.pch"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,7 +128,7 @@
 		FD4963751AE3F66300C7E21F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				FD4963BD1AE3F6D200C7E21F /* KYBStockChart-Prefix.pch */,
+				FD1E900F1AE53EAC00BFAC7E /* KYBStockChart-Prefix.pch */,
 				FD4963761AE3F66300C7E21F /* Info.plist */,
 				FD4963771AE3F66300C7E21F /* main.m */,
 			);
@@ -508,6 +508,7 @@
 				FD4963971AE3F66300C7E21F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FD4963981AE3F66300C7E21F /* Build configuration list for PBXNativeTarget "KYBStockChartTests" */ = {
 			isa = XCConfigurationList;
@@ -516,6 +517,7 @@
 				FD49639A1AE3F66300C7E21F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
