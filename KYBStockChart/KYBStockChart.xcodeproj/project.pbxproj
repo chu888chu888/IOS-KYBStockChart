@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		FD1E90121AE5401300BFAC7E /* example.png in Resources */ = {isa = PBXBuildFile; fileRef = FD1E90111AE5401300BFAC7E /* example.png */; };
+		FD1E90141AE5439300BFAC7E /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = FD1E90131AE5439300BFAC7E /* README.md */; };
 		FD4963781AE3F66300C7E21F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FD4963771AE3F66300C7E21F /* main.m */; };
 		FD49637B1AE3F66300C7E21F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FD49637A1AE3F66300C7E21F /* AppDelegate.m */; };
 		FD49637E1AE3F66300C7E21F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD49637D1AE3F66300C7E21F /* ViewController.m */; };
@@ -40,6 +41,7 @@
 /* Begin PBXFileReference section */
 		FD1E900F1AE53EAC00BFAC7E /* KYBStockChart-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KYBStockChart-Prefix.pch"; sourceTree = "<group>"; };
 		FD1E90111AE5401300BFAC7E /* example.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = example.png; sourceTree = "<group>"; };
+		FD1E90131AE5439300BFAC7E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
 		FD4963721AE3F66300C7E21F /* KYBStockChart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KYBStockChart.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD4963761AE3F66300C7E21F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FD4963771AE3F66300C7E21F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 				FD1E900F1AE53EAC00BFAC7E /* KYBStockChart-Prefix.pch */,
 				FD4963761AE3F66300C7E21F /* Info.plist */,
 				FD4963771AE3F66300C7E21F /* main.m */,
+				FD1E90131AE5439300BFAC7E /* README.md */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 				FD4963BC1AE3F6B100C7E21F /* TSMAEntity.m in Sources */,
 				FD4963B81AE3F6B100C7E21F /* KYBStockChartCommon.m in Sources */,
 				FD4963B41AE3F6B100C7E21F /* KYBStockKCandleChat.m in Sources */,
+				FD1E90141AE5439300BFAC7E /* README.md in Sources */,
 				FD49637B1AE3F66300C7E21F /* AppDelegate.m in Sources */,
 				FD4963781AE3F66300C7E21F /* main.m in Sources */,
 				FD4963B61AE3F6B100C7E21F /* KYBStockVolumeChart.m in Sources */,
