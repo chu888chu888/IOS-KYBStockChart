@@ -25,6 +25,10 @@
 
 @property UILongPressGestureRecognizer *longPressGesture;
 
+@property CGPoint touchPint;
+
+@property BOOL showReferenceLine;
+
 @end
 
 @implementation KYBStockBaseChart
@@ -35,6 +39,7 @@
         self.maxY = startYValue + range;
         self.minY = startYValue - range;
         [self initBaseData];
+        [self initGesture];
     }
     return self;
 }
@@ -43,6 +48,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         [self initBaseData];
+        [self initGesture];
     }
     return self;
 }
@@ -58,8 +64,9 @@
 
 -(void)initGesture{
     _longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
+    _longPressGesture.minimumPressDuration = 0.5;
 //    _longPressGesture.
-//    [self addGestureRecognizer:_longPressGesture];
+    [self addGestureRecognizer:_longPressGesture];
 }
 
 -(void)setEdgeInsets:(UIEdgeInsets)edgeInsets{
@@ -82,7 +89,14 @@
 }
 
 -(void)handleLongPress:(UIGestureRecognizer *)gestureRecognizer{
-    CGPoint curPoint = [gestureRecognizer locationInView:self];
+    _touchPint = [gestureRecognizer locationInView:self];
+    _showReferenceLine = NO;
+    if (gestureRecognizer.state == UIGestureRecognizerStateBegan || gestureRecognizer.state == UIGestureRecognizerStateChanged) {
+        if (_touchPint.x > self.originPoint.x && _touchPint.x < self.rightBottomPoint.x && _touchPint.y > self.leftTopPoint.y && _touchPint.y < self.originPoint.y) {
+            _showReferenceLine = YES;
+        }
+    }
+    [self setNeedsDisplay];
 }
 
 
@@ -265,6 +279,29 @@
     
     //测试画蜡烛线
     [KYBStockChartCommon drawCandle:context rect:CGRectMake(self.originPoint.x + 5, self.leftTopPoint.y + 5, 5, 20) top:3 bottom:3 color:StockGreen];
+    
+#pragma mark 画辅助线
+    if (_showReferenceLine) {
+//        CGContextSetLineDash(context, 0.0, dashPattern, 2); //虚线效果
+        [KYBStockChartCommon drawLine:context
+                           startPoint:CGPointMake(self.originPoint.x, _touchPint.y)
+                             endPoint:CGPointMake(self.rightBottomPoint.x, _touchPint.y)
+                            lineColor:AxisColor
+                                width:0.2];
+        [KYBStockChartCommon drawLine:context
+                           startPoint:CGPointMake(_touchPint.x, self.leftTopPoint.y)
+                             endPoint:CGPointMake(_touchPint.x, self.originPoint.y)
+                            lineColor:AxisColor
+                                width:0.2];
+        CGRect refLabelRect;
+        if (_touchPint.x < _xLen/2 + self.edgeInsets.left) {
+            refLabelRect = CGRectMake(self.rightBottomPoint.x - 60, _touchPint.y - 7.5, 60, 15);
+        }else{
+            refLabelRect = CGRectMake(self.originPoint.x, _touchPint.y - 7.5, 60, 15);
+        }
+        [KYBStockChartCommon drawRect:context rect:refLabelRect fillColor:[UIColor colorWithWhite:1.0f alpha:0.9f]];
+    }
+    
 }
 
 //根据值获得y坐标
