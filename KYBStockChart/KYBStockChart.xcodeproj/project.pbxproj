@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B1D6FA8F1AEE4886004F45BE /* KCandleForDrawEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D6FA8C1AEE4886004F45BE /* KCandleForDrawEntity.m */; };
+		B1D6FA901AEE4886004F45BE /* LineForDrawEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D6FA8E1AEE4886004F45BE /* LineForDrawEntity.m */; };
 		FD1E90121AE5401300BFAC7E /* example.png in Resources */ = {isa = PBXBuildFile; fileRef = FD1E90111AE5401300BFAC7E /* example.png */; };
 		FD1E90141AE5439300BFAC7E /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = FD1E90131AE5439300BFAC7E /* README.md */; };
 		FD4963781AE3F66300C7E21F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FD4963771AE3F66300C7E21F /* main.m */; };
@@ -39,6 +41,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B1D6FA8B1AEE4886004F45BE /* KCandleForDrawEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCandleForDrawEntity.h; sourceTree = "<group>"; };
+		B1D6FA8C1AEE4886004F45BE /* KCandleForDrawEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCandleForDrawEntity.m; sourceTree = "<group>"; };
+		B1D6FA8D1AEE4886004F45BE /* LineForDrawEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineForDrawEntity.h; sourceTree = "<group>"; };
+		B1D6FA8E1AEE4886004F45BE /* LineForDrawEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineForDrawEntity.m; sourceTree = "<group>"; };
 		FD1E900F1AE53EAC00BFAC7E /* KYBStockChart-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KYBStockChart-Prefix.pch"; sourceTree = "<group>"; };
 		FD1E90111AE5401300BFAC7E /* example.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = example.png; sourceTree = "<group>"; };
 		FD1E90131AE5439300BFAC7E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
@@ -95,6 +101,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B1D6FA8A1AEE4886004F45BE /* Draw */ = {
+			isa = PBXGroup;
+			children = (
+				B1D6FA8B1AEE4886004F45BE /* KCandleForDrawEntity.h */,
+				B1D6FA8C1AEE4886004F45BE /* KCandleForDrawEntity.m */,
+				B1D6FA8D1AEE4886004F45BE /* LineForDrawEntity.h */,
+				B1D6FA8E1AEE4886004F45BE /* LineForDrawEntity.m */,
+			);
+			path = Draw;
+			sourceTree = "<group>";
+		};
 		FD1E90101AE5401300BFAC7E /* img */ = {
 			isa = PBXGroup;
 			children = (
@@ -207,6 +224,7 @@
 		FD4963AC1AE3F6B100C7E21F /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				B1D6FA8A1AEE4886004F45BE /* Draw */,
 				FD4963AD1AE3F6B100C7E21F /* KCandleEnitity.h */,
 				FD4963AE1AE3F6B100C7E21F /* KCandleEnitity.m */,
 				FD4963AF1AE3F6B100C7E21F /* KYBChartLineEntity.h */,
@@ -325,6 +343,8 @@
 				FD4963B71AE3F6B100C7E21F /* DataCommon.m in Sources */,
 				FD4963B31AE3F6B100C7E21F /* KYBStockBaseChart.m in Sources */,
 				FD4963BA1AE3F6B100C7E21F /* KCandleEnitity.m in Sources */,
+				B1D6FA8F1AEE4886004F45BE /* KCandleForDrawEntity.m in Sources */,
+				B1D6FA901AEE4886004F45BE /* LineForDrawEntity.m in Sources */,
 				FD4963BC1AE3F6B100C7E21F /* TSMAEntity.m in Sources */,
 				FD4963B81AE3F6B100C7E21F /* KYBStockChartCommon.m in Sources */,
 				FD4963B41AE3F6B100C7E21F /* KYBStockKCandleChat.m in Sources */,

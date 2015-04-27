@@ -8,6 +8,7 @@
 
 #import "KYBStockBaseChart.h"
 #import "NSString+UILabel.h"
+#import "LineForDrawEntity.h"
 
 @interface KYBStockBaseChart()
 
@@ -27,7 +28,11 @@
 
 @property CGPoint touchPint;
 
-@property BOOL showReferenceLine;
+@property (nonatomic,strong) NSMutableArray *lineArrayForDraw;
+
+@property (nonatomic,strong) NSMutableArray *pointArrayForSelect;
+
+@property (nonatomic,assign) BOOL shouldShowReferenceLine;
 
 @end
 
@@ -54,18 +59,21 @@
 }
 
 -(void)initBaseData{
+    _lineArrayForDraw = [NSMutableArray array];
+    _pointArrayForSelect = [NSMutableArray array];
     self.backgroundColor = [UIColor whiteColor];
     _graduationFont = [UIFont systemFontOfSize:8];
     _lineNameFont = [UIFont systemFontOfSize:10];
     [self setEdgeInsets:UIEdgeInsetsMake(30, 40, 20, 20)];
     _leftGraduationArray = [NSMutableArray arrayWithCapacity:DEFAULT_X_COUNT + 1];
     _rightGraduationArray = [NSMutableArray arrayWithCapacity:DEFAULT_X_COUNT + 1];
+    _touchPint = self.originPoint;
 }
 
 -(void)initGesture{
     _longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
     _longPressGesture.minimumPressDuration = 0.5;
-//    _longPressGesture.
+    //    _longPressGesture.
     [self addGestureRecognizer:_longPressGesture];
 }
 
@@ -88,13 +96,74 @@
     }
 }
 
--(void)handleLongPress:(UIGestureRecognizer *)gestureRecognizer{
-    _touchPint = [gestureRecognizer locationInView:self];
-    _showReferenceLine = NO;
-    if (gestureRecognizer.state == UIGestureRecognizerStateBegan || gestureRecognizer.state == UIGestureRecognizerStateChanged) {
-        if (_touchPint.x > self.originPoint.x && _touchPint.x < self.rightBottomPoint.x && _touchPint.y > self.leftTopPoint.y && _touchPint.y < self.originPoint.y) {
-            _showReferenceLine = YES;
+-(void)setChartLineArray:(NSMutableArray *)chartLineArray{
+    _chartLineArray = chartLineArray;
+    [_lineArrayForDraw removeAllObjects];
+    [_pointArrayForSelect removeAllObjects];
+    for(KYBChartLineEntity *line in _chartLineArray){
+        NSMutableArray *drawEnitiyArray = [NSMutableArray array];
+        for (int i = 0; i < line.dataArray.count - 1; i++) {
+            TSMAEntity *entity1 = line.dataArray[i];
+            TSMAEntity *entity2 = line.dataArray[i + 1];
+            CGFloat xPosition1 = self.originPoint.x + self.xStepLen * i;
+            CGFloat xPosition2 = self.originPoint.x + self.xStepLen * (i + 1);
+            CGFloat yPosition1 = [self getYpositionWithValue:entity1.value];
+            CGFloat yPosition2 = [self getYpositionWithValue:entity2.value];
+            switch (line.type) {
+                case KYBChartLineType_TS://分时
+                case KYBChartLineType_MA://均线
+                {
+                    CGPoint startPoint = CGPointMake(xPosition1, yPosition1);
+                    CGPoint endPoint = CGPointMake(xPosition2, yPosition2);
+                    LineForDrawEntity *entity = [[LineForDrawEntity alloc] init];
+                    entity.startPoint = startPoint;
+                    entity.endPoint = endPoint;
+                    entity.lineColor = line.lineColor;
+                    entity.thickness = line.thickness;
+                    [drawEnitiyArray addObject:entity];
+                    if (line == _chartLineArray.firstObject) {//基准线
+                        [_pointArrayForSelect addObject:[[NSValue alloc] initWithBytes:&startPoint objCType:@encode(CGPoint)]];
+                        if (i == line.dataArray.count - 2) {
+                            [_pointArrayForSelect addObject:[[NSValue alloc] initWithBytes:&endPoint objCType:@encode(CGPoint)]];
+                        }
+                    }
+                }
+                    
+                    break;
+                case KYBChartLineType_K://k线
+                    
+                    break;
+                    
+                default:
+                    break;
+            }
         }
+        [_lineArrayForDraw addObject:drawEnitiyArray];
+    }
+    
+    
+}
+
+-(void)handleLongPress:(UIGestureRecognizer *)gestureRecognizer{
+    CGPoint touchPoint = [gestureRecognizer locationInView:self];
+    if (gestureRecognizer.state == UIGestureRecognizerStateBegan || gestureRecognizer.state == UIGestureRecognizerStateChanged) {
+        CGFloat touchPointX = touchPoint.x;
+        CGFloat touchPointY = touchPoint.y;
+        if (touchPointX < self.originPoint.x) {
+            touchPointX = self.originPoint.x;
+        }else if (touchPointX > self.rightBottomPoint.x){
+            touchPointX = self.rightBottomPoint.x;
+        }
+        
+        if (touchPointY < self.leftTopPoint.y) {
+            touchPointY = self.leftTopPoint.y;
+        }else if (touchPoint.y > self.originPoint.y){
+            touchPointY = self.originPoint.y;
+        }
+        _shouldShowReferenceLine = YES;
+        _touchPint = CGPointMake(touchPointX, touchPointY);
+    }else{
+        _shouldShowReferenceLine = NO;
     }
     [self setNeedsDisplay];
 }
@@ -153,9 +222,9 @@
         CGFloat yPosition = self.originPoint.y - _yLen / DEFAULT_X_COUNT * i;
         CGSize titleSize = [valStr fixSizeWithFont:_graduationFont];
         CGRect titleRect = CGRectMake(_edgeInsets.left - titleSize.width - 5,
-                                       yPosition - (titleSize.height)/2,
-                                       titleSize.width,
-                                       titleSize.height);
+                                      yPosition - (titleSize.height)/2,
+                                      titleSize.width,
+                                      titleSize.height);
         [valStr drawInRect:titleRect withFont:_graduationFont lineBreakMode:NSLineBreakByClipping alignment:NSTextAlignmentRight];
     }
     
@@ -172,9 +241,9 @@
         CGFloat yPosition = self.originPoint.y - _yLen / DEFAULT_X_COUNT * i;
         CGSize titleSize = [valStr fixSizeWithFont:_graduationFont];
         CGRect titleRect = CGRectMake(self.rightBottomPoint.x - titleSize.width,
-                                       yPosition - (titleSize.height)/2,
-                                       titleSize.width,
-                                       titleSize.height);
+                                      yPosition - (titleSize.height)/2,
+                                      titleSize.width,
+                                      titleSize.height);
         [valStr drawInRect:titleRect withFont:_graduationFont lineBreakMode:NSLineBreakByClipping alignment:NSTextAlignmentRight];
     }
     
@@ -246,58 +315,39 @@
     }
     
 #pragma mark 画线
-    for(KYBChartLineEntity *line in _chartLineArray){
-        for (int i = 0; i < line.dataArray.count - 1; i++) {
-            TSMAEntity *entity1 = line.dataArray[i];
-            TSMAEntity *entity2 = line.dataArray[i + 1];
-            CGFloat xPosition1 = self.originPoint.x + self.xStepLen * i;
-            CGFloat xPosition2 = self.originPoint.x + self.xStepLen * (i + 1);
-            CGFloat yPosition1 = [self getYpositionWithValue:entity1.value];
-            CGFloat yPosition2 = [self getYpositionWithValue:entity2.value];
-        switch (line.type) {
-            case KYBChartLineType_TS://分时
-            {
-                CGPoint startPoint = CGPointMake(xPosition1, yPosition1);
-                CGPoint endPoint = CGPointMake(xPosition2, yPosition2);
-                CGContextSetLineDash(context,0,normal,0); //画实线
-                [KYBStockChartCommon drawLine:context startPoint:startPoint endPoint:endPoint lineColor:line.lineColor width:line.thickness];
+    CGContextSetLineDash(context,0,normal,0); //画实线
+    for (NSMutableArray *lineEntities in _lineArrayForDraw) {
+        if (lineEntities.count == 0) return;
+        NSObject *obj = lineEntities.firstObject;
+        if ([obj isKindOfClass:[LineForDrawEntity class]]) {
+            for (LineForDrawEntity *entity in lineEntities) {
+                [entity drawLine:context];
             }
-                break;
-            case KYBChartLineType_MA://均线
-                
-                break;
-            case KYBChartLineType_K://k线
-                
-                break;
-            
-            default:
-                break;
-        }
         }
     }
-    
     
     //测试画蜡烛线
     [KYBStockChartCommon drawCandle:context rect:CGRectMake(self.originPoint.x + 5, self.leftTopPoint.y + 5, 5, 20) top:3 bottom:3 color:StockGreen];
     
 #pragma mark 画辅助线
-    if (_showReferenceLine) {
-//        CGContextSetLineDash(context, 0.0, dashPattern, 2); //虚线效果
+    if (_showReferenceLine && _shouldShowReferenceLine) {
+        CGPoint closePoint = [self closePointWithTouchPoint:_touchPint];
+        //        CGContextSetLineDash(context, 0.0, dashPattern, 2); //虚线效果
         [KYBStockChartCommon drawLine:context
-                           startPoint:CGPointMake(self.originPoint.x, _touchPint.y)
-                             endPoint:CGPointMake(self.rightBottomPoint.x, _touchPint.y)
+                           startPoint:CGPointMake(self.originPoint.x, closePoint.y)
+                             endPoint:CGPointMake(self.rightBottomPoint.x, closePoint.y)
                             lineColor:AxisColor
                                 width:0.2];
         [KYBStockChartCommon drawLine:context
-                           startPoint:CGPointMake(_touchPint.x, self.leftTopPoint.y)
-                             endPoint:CGPointMake(_touchPint.x, self.originPoint.y)
+                           startPoint:CGPointMake(closePoint.x, self.leftTopPoint.y)
+                             endPoint:CGPointMake(closePoint.x, self.originPoint.y)
                             lineColor:AxisColor
                                 width:0.2];
         CGRect refLabelRect;
-        if (_touchPint.x < _xLen/2 + self.edgeInsets.left) {
-            refLabelRect = CGRectMake(self.rightBottomPoint.x - 60, _touchPint.y - 7.5, 60, 15);
+        if (closePoint.x < _xLen/2 + self.edgeInsets.left) {
+            refLabelRect = CGRectMake(self.rightBottomPoint.x - 60, closePoint.y - 7.5, 60, 15);
         }else{
-            refLabelRect = CGRectMake(self.originPoint.x, _touchPint.y - 7.5, 60, 15);
+            refLabelRect = CGRectMake(self.originPoint.x, closePoint.y - 7.5, 60, 15);
         }
         [KYBStockChartCommon drawRect:context rect:refLabelRect fillColor:[UIColor colorWithWhite:1.0f alpha:0.9f]];
     }
@@ -312,6 +362,16 @@
 //计算值在坐标系中的长度
 -(CGFloat)getValueLen:(CGFloat)value{
     return value * self.yLen / (self.maxY - self.minY);
+}
+
+//获得距离触点最近的坐标位置
+-(CGPoint)closePointWithTouchPoint:(CGPoint)touchPoint{
+    NSInteger xStep = (NSInteger)((touchPoint.x - self.originPoint.x)/_xStepLen + 0.5);//第几个x轴单位坐标点
+    NSValue *value = self.pointArrayForSelect[xStep];
+    CGPoint selectedPoint;
+    [value getValue:&selectedPoint];
+    //    NSLog(@"%f",(touchPoint.x - self.originPoint.x)/_xStepLen);
+    return selectedPoint;
 }
 
 @end

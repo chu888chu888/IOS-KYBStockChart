@@ -45,6 +45,7 @@
 
 @property (nonatomic,strong) NSMutableArray *chartLineArray;
 
+@property (nonatomic,assign) BOOL showReferenceLine;
 
 -(instancetype)initWithFrame:(CGRect)frame absRange:(CGFloat)range startYValue:(CGFloat)startYValue;
 

@@ -75,6 +75,7 @@
     trendChart.rightGraduationArray = rightArray;
     trendChart.bottomGraduationArray = bottomArray;
     trendChart.chartLineArray = [NSMutableArray arrayWithObjects:tsLine, maLine1,nil];
+    trendChart.showReferenceLine = YES;
     [self.view addSubview:trendChart];
     
     
