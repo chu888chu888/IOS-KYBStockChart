@@ -11,7 +11,7 @@
 #import "KYBStockKCandleChat.h"
 #import "DataCommon.h"
 
-#define  dataCount 100
+#define  dataCount 80
 
 @interface ViewController (){
     KYBStockTrendChart *trendChart;
@@ -25,9 +25,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    NSArray *leftArray = @[@"13.86",@"14.63",@"15.40",@"16.17",@"16.94"];
-    NSArray *rightArray = @[@"-10.00%",@"-5.00%",@"0%",@"5.00%",@"10.00%"];
-    NSArray *bottomArray = @[@"09:30",@"10:30",@"11:30/13:00",@"14:00",@"15:00"];
     
     NSMutableArray *tsArray = [NSMutableArray array];
     NSMutableArray *avArray = [NSMutableArray array];
@@ -53,27 +50,26 @@
     CGFloat minabs = fabs(min - startValue);
     CGFloat bigabs = fmaxf(maxabs, minabs);
     CGFloat maxPercet = bigabs / startValue * 100;
-    leftArray = @[[NSString stringWithFormat:@"%.2f",startValue - bigabs],
+    NSArray *leftArray = @[[NSString stringWithFormat:@"%.2f",startValue - bigabs],
                   [NSString stringWithFormat:@"%.2f",startValue - bigabs / 2],
                   [NSString stringWithFormat:@"%.2f",startValue],
                   [NSString stringWithFormat:@"%.2f",startValue + bigabs /2],
                   [NSString stringWithFormat:@"%.2f",startValue + bigabs]];
-    rightArray = @[[NSString stringWithFormat:@"%.2f%%",-maxPercet],
+    NSArray *rightArray = @[[NSString stringWithFormat:@"%.2f%%",-maxPercet],
                    [NSString stringWithFormat:@"%.2f%%",-maxPercet / 2],
                    @"0%",
                    [NSString stringWithFormat:@"%.2f%%",maxPercet /2],
                    [NSString stringWithFormat:@"%.2f%%",maxPercet]];
     
     
-    KYBChartLineEntity * tsLine = [[KYBChartLineEntity alloc] initWithType:KYBChartLineType_TS name:@"分时" lineColor:[UIColor blackColor] thickness:0.3f totalPointCount:dataCount dataArray:tsArray];
-    KYBChartLineEntity * maLine1 = [[KYBChartLineEntity alloc] initWithType:KYBChartLineType_TS name:@"均值" lineColor:[UIColor orangeColor] thickness:0.3f totalPointCount:dataCount dataArray:avArray];
+    KYBChartLineEntity * tsLine = [[KYBChartLineEntity alloc] initWithType:KYBChartLineType_TS name:@"分时" lineColor:[UIColor blackColor] thickness:0.5f totalPointCount:dataCount dataArray:tsArray];
+    KYBChartLineEntity * maLine1 = [[KYBChartLineEntity alloc] initWithType:KYBChartLineType_TS name:@"均值" lineColor:[UIColor orangeColor] thickness:0.5f totalPointCount:dataCount dataArray:avArray];
     trendChart = [[KYBStockTrendChart alloc] initWithFrame:CGRectMake(0, 64, iDeviceWidth, iDeviceWidth / 5 * 3) absRange:bigabs startYValue:startValue];
-    trendChart.contentChart.pointCount = dataCount;
+    trendChart.pointCount = 100;
     trendChart.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     trendChart.backgroundColor = UIColorFromRGB(0xf8f8f8);
     trendChart.contentChart.leftGraduationArray = leftArray;
     trendChart.contentChart.rightGraduationArray = rightArray;
-    trendChart.contentChart.bottomGraduationArray = bottomArray;
     trendChart.chartLineArray = [NSMutableArray arrayWithObjects:tsLine, maLine1,nil];
     trendChart.showReferenceLine = YES;
     [self.view addSubview:trendChart];

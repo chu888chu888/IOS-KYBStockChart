@@ -18,6 +18,8 @@
 
 @property UILongPressGestureRecognizer *longPressGesture;
 
+@property (nonatomic,weak) KYBReferenceView *referenceView;
+
 @end
 
 @implementation KYBStockTrendChart
@@ -43,15 +45,22 @@
 }
 
 -(void)initBaseData{
+    NSArray *bottomArray = @[@"09:30",@"10:30",@"11:30/13:00",@"14:00",@"15:00"];
     KYBStockChart *baseChart = [[KYBStockChart alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height * 0.8) absRange:_range startYValue:_startYValue];
     baseChart.showYAxis = YES;
     baseChart.userInteractionEnabled = NO;
+    baseChart.bottomGraduationArray = bottomArray;
     [self addSubview:baseChart];
     _contentChart = baseChart;
     
     KYBStockVolumeChart *volumnChart = [[KYBStockVolumeChart alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(baseChart.frame), self.frame.size.width, self.frame.size.height * 0.2)];
     [self addSubview:volumnChart];
     _volumnChart = volumnChart;
+    
+    KYBReferenceView *referenceView = [[KYBReferenceView alloc] initWithFrame:self.bounds];
+    referenceView.backgroundColor = [UIColor clearColor];
+    [self addSubview:referenceView];
+    _referenceView = referenceView;
 }
 
 -(void)initGesture{
@@ -82,7 +91,13 @@
     }else{
         self.shouldShowReferenceLine = NO;
     }
-    [self setNeedsDisplay];
+    [self refreshReferenView];
+}
+
+-(void)setPointCount:(NSInteger)pointCount{
+    _pointCount = pointCount;
+    self.volumnChart.pointCount = pointCount;
+    self.contentChart.pointCount = pointCount;
 }
 
 -(void)setChartLineArray:(NSMutableArray *)chartLineArray{
@@ -135,44 +150,32 @@
     self.contentChart.pointArrayForSelect = pointArrayForSelect;
 }
 
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    [super drawRect:rect];
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    #pragma mark 画辅助线
-    if (_showReferenceLine && _shouldShowReferenceLine) {
-        CGPoint closePoint = [self.contentChart closePointWithTouchPoint:self.contentChart.touchPint];
-        CGPoint _closePoint = [self covertPointFromContentChart:closePoint];
-        [KYBStockChartCommon drawLine:context
-                           startPoint:CGPointMake([self covertPointFromContentChart:self.contentChart.originPoint].x, closePoint.y)
-                             endPoint:CGPointMake([self covertPointFromContentChart:self.contentChart.rightBottomPoint].x, closePoint.y)
-                            lineColor:AxisColor
-                                width:0.2];
-        [KYBStockChartCommon drawLine:context
-                           startPoint:CGPointMake(_closePoint.x, [self covertPointFromContentChart:self.contentChart.leftTopPoint].y)
-                             endPoint:CGPointMake(_closePoint.x, [self covertPointFromVolumnChart:self.volumnChart.originPoint].y)
-                            lineColor:AxisColor
-                                width:0.2];
-        CGRect refSideLabelRect;
-        if (closePoint.x < self.contentChart.xLen/2 + self.contentChart.edgeInsets.left) {
-            refSideLabelRect = CGRectMake(self.contentChart.rightBottomPoint.x - 60, closePoint.y - 7.5, 60, 15);
-        }else{
-            refSideLabelRect = CGRectMake(self.contentChart.originPoint.x, closePoint.y - 7.5, 60, 15);
-        }
-        CGRect _refLabelRect = [self covertRectFromContentChart:refSideLabelRect];
-        [KYBStockChartCommon drawRect:context rect:_refLabelRect fillColor:[UIColor colorWithWhite:1.0f alpha:0.9f]];
-        
-        CGRect refBottomLabelRect;
-        CGFloat refBottomLabelX = _closePoint.x;
-        if (refBottomLabelX < [self covertPointFromContentChart:self.contentChart.originPoint].x + 30) {
-            refBottomLabelX = [self covertPointFromContentChart:self.contentChart.originPoint].x + 30;
-        }else if (refBottomLabelX > [self covertPointFromContentChart:self.contentChart.rightBottomPoint].x - 30){
-            refBottomLabelX = [self covertPointFromContentChart:self.contentChart.rightBottomPoint].x - 30;
-        }
-        refBottomLabelRect = CGRectMake(refBottomLabelX - 30, self.volumnChart.frame.origin.y + (self.volumnChart.frame.size.height - 15) * 0.5 , 60, 15);
-        [KYBStockChartCommon drawRect:context rect:refBottomLabelRect fillColor:[UIColor colorWithWhite:1.0f alpha:0.9f]];
+- (void)refreshReferenView{
+    if (!_showReferenceLine) {
+        return;
     }
+    _referenceView.shouldShowReferenceLine = self.shouldShowReferenceLine;
+    CGPoint closePoint = [self.contentChart closePointWithTouchPoint:self.contentChart.touchPint];
+    CGPoint _closePoint = [self covertPointFromContentChart:closePoint];
+    _referenceView.hPoint1 = CGPointMake([self covertPointFromContentChart:self.contentChart.originPoint].x, closePoint.y);
+    _referenceView.hPoint2 = CGPointMake([self covertPointFromContentChart:self.contentChart.rightBottomPoint].x, closePoint.y);
+    _referenceView.vPoint1 = CGPointMake(_closePoint.x, [self covertPointFromContentChart:self.contentChart.leftTopPoint].y);
+    _referenceView.vPoint2 = CGPointMake(_closePoint.x, [self covertPointFromVolumnChart:self.volumnChart.originPoint].y);
+    CGRect refSideLabelRect;
+    if (closePoint.x < self.contentChart.xLen/2 + self.contentChart.edgeInsets.left) {
+        refSideLabelRect = CGRectMake(self.contentChart.rightBottomPoint.x - 60, closePoint.y - 7.5, 60, 15);
+    }else{
+        refSideLabelRect = CGRectMake(self.contentChart.originPoint.x, closePoint.y - 7.5, 60, 15);
+    }
+    _referenceView.sideLabelRect = [self covertRectFromContentChart:refSideLabelRect];
+    CGFloat refBottomLabelX = _closePoint.x;
+    if (refBottomLabelX < [self covertPointFromContentChart:self.contentChart.originPoint].x + 30) {
+        refBottomLabelX = [self covertPointFromContentChart:self.contentChart.originPoint].x + 30;
+    }else if (refBottomLabelX > [self covertPointFromContentChart:self.contentChart.rightBottomPoint].x - 30){
+        refBottomLabelX = [self covertPointFromContentChart:self.contentChart.rightBottomPoint].x - 30;
+    }
+    _referenceView.bottomLabelRect = CGRectMake(refBottomLabelX - 30, self.volumnChart.frame.origin.y + (self.volumnChart.frame.size.height - 15) * 0.5 , 60, 15);
+    [_referenceView setNeedsDisplay];
 }
 
 -(CGPoint)covertPointFromContentChart:(CGPoint)pointInContentChart{
@@ -187,5 +190,20 @@
     return [self convertPoint:pointInVolumnChart fromView:self.volumnChart];
 }
 
+
+@end
+
+@implementation KYBReferenceView
+
+-(void)drawRect:(CGRect)rect{
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    #pragma mark 画辅助线
+    if (_shouldShowReferenceLine) {
+        [KYBStockChartCommon drawLine:context startPoint:_hPoint1 endPoint:_hPoint2 lineColor:AxisColor width:0.2];
+        [KYBStockChartCommon drawLine:context startPoint:_vPoint1 endPoint:_vPoint2 lineColor:AxisColor width:0.2];
+        [KYBStockChartCommon drawRect:context rect:_sideLabelRect fillColor:[UIColor colorWithWhite:1.0f alpha:1.0f]];
+        [KYBStockChartCommon drawRect:context rect:_bottomLabelRect fillColor:[UIColor colorWithWhite:1.0f alpha:1.0f]];
+    }
+}
 
 @end

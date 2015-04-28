@@ -225,6 +225,9 @@
 //获得距离触点最近的坐标位置
 -(CGPoint)closePointWithTouchPoint:(CGPoint)touchPoint{
     NSInteger xStep = (NSInteger)((touchPoint.x - self.originPoint.x)/self.xStepLen + 0.5);//第几个x轴单位坐标点
+    if (xStep > self.pointArrayForSelect.count - 1) {
+        xStep = self.pointArrayForSelect.count - 1;
+    }
     NSValue *value = self.pointArrayForSelect[xStep];
     CGPoint selectedPoint;
     [value getValue:&selectedPoint];

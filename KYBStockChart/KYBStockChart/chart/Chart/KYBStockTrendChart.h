@@ -22,6 +22,26 @@
 
 @property (nonatomic,assign) BOOL shouldShowReferenceLine;//绘制用
 
+@property (nonatomic,assign) NSInteger pointCount;
+
 -(instancetype)initWithFrame:(CGRect)frame absRange:(CGFloat)range startYValue:(CGFloat)startYValue;
+
+@end
+
+@interface KYBReferenceView : UIView
+
+@property (nonatomic,assign) BOOL shouldShowReferenceLine;//绘制用
+
+@property (nonatomic,assign) CGPoint hPoint1;
+
+@property (nonatomic,assign) CGPoint hPoint2;
+
+@property (nonatomic,assign) CGPoint vPoint1;
+
+@property (nonatomic,assign) CGPoint vPoint2;
+
+@property (nonatomic,assign) CGRect sideLabelRect;
+
+@property (nonatomic,assign) CGRect bottomLabelRect;
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "KYBChartLineEntity.h"
 
 @interface LineForDrawEntity : NSObject
 
@@ -17,6 +18,8 @@
 @property (nonatomic,strong) UIColor *lineColor;//线颜色
 
 @property (nonatomic,assign) CGFloat thickness;//线粗细
+
+@property (nonatomic,assign) KYBChartLineType lineType;
 
 -(void)drawLine:(CGContextRef)context;
 
