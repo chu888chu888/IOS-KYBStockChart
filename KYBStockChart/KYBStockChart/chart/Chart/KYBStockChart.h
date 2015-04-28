@@ -10,16 +10,13 @@
 #import "KYBStockChartCommon.h"
 #import "KYBChartLineEntity.h"
 #import "TSMAEntity.h"
+#import "KYBStockBaseChart.h"
 
 #define DEFAULT_Y_COUNT 3 //可见区域y轴竖线总数
 #define DEFAULT_X_COUNT 4 //可见区域x轴总数
 
 
-@interface KYBStockBaseChart : UIView
-
-@property (nonatomic,assign) NSInteger pointCount;//结点个数
-
-@property (nonatomic,assign) UIEdgeInsets edgeInsets;//收缩
+@interface KYBStockChart : KYBStockBaseChart
 
 @property (nonatomic,assign) BOOL showYAxis;//是否显示可见区域y轴竖线
 
@@ -45,9 +42,19 @@
 
 @property (nonatomic,strong) NSMutableArray *chartLineArray;
 
-@property (nonatomic,assign) BOOL showReferenceLine;
+@property CGPoint touchPint;
+
+@property (nonatomic,strong) NSMutableArray *lineArrayForDraw;
+
+@property (nonatomic,strong) NSMutableArray *pointArrayForSelect;
 
 -(instancetype)initWithFrame:(CGRect)frame absRange:(CGFloat)range startYValue:(CGFloat)startYValue;
+
+//根据值获得y坐标
+-(CGFloat)getYpositionWithValue:(CGFloat)value;
+
+//获得距离触点最近的坐标位置
+-(CGPoint)closePointWithTouchPoint:(CGPoint)touchPoint;
 
 -(void)refresh;//刷新
 

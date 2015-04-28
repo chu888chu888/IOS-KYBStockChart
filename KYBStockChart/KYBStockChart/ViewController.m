@@ -68,12 +68,12 @@
     KYBChartLineEntity * tsLine = [[KYBChartLineEntity alloc] initWithType:KYBChartLineType_TS name:@"分时" lineColor:[UIColor blackColor] thickness:0.3f totalPointCount:dataCount dataArray:tsArray];
     KYBChartLineEntity * maLine1 = [[KYBChartLineEntity alloc] initWithType:KYBChartLineType_TS name:@"均值" lineColor:[UIColor orangeColor] thickness:0.3f totalPointCount:dataCount dataArray:avArray];
     trendChart = [[KYBStockTrendChart alloc] initWithFrame:CGRectMake(0, 64, iDeviceWidth, iDeviceWidth / 5 * 3) absRange:bigabs startYValue:startValue];
-    trendChart.pointCount = dataCount;
+    trendChart.contentChart.pointCount = dataCount;
     trendChart.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     trendChart.backgroundColor = UIColorFromRGB(0xf8f8f8);
-    trendChart.leftGraduationArray = leftArray;
-    trendChart.rightGraduationArray = rightArray;
-    trendChart.bottomGraduationArray = bottomArray;
+    trendChart.contentChart.leftGraduationArray = leftArray;
+    trendChart.contentChart.rightGraduationArray = rightArray;
+    trendChart.contentChart.bottomGraduationArray = bottomArray;
     trendChart.chartLineArray = [NSMutableArray arrayWithObjects:tsLine, maLine1,nil];
     trendChart.showReferenceLine = YES;
     [self.view addSubview:trendChart];

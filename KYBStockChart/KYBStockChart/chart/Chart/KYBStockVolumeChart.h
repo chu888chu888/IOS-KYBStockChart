@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "KYBStockBaseChart.h"
 
-@interface KYBStockVolumeChart : UIView
+@interface KYBStockVolumeChart : KYBStockBaseChart
+
 
 @end

@@ -19,7 +19,7 @@
 }
 
 -(void)initData{
-    self.showYAxis = NO;
+//    self.showYAxis = NO;
 }
 
 // Only override drawRect: if you perform custom drawing.

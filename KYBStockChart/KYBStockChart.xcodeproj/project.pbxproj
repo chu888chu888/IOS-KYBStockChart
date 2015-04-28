@@ -10,6 +10,9 @@
 		B1D6FA8F1AEE4886004F45BE /* KCandleForDrawEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D6FA8C1AEE4886004F45BE /* KCandleForDrawEntity.m */; };
 		B1D6FA901AEE4886004F45BE /* LineForDrawEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D6FA8E1AEE4886004F45BE /* LineForDrawEntity.m */; };
 		B1D6FABD1AEE4B36004F45BE /* example.png in Resources */ = {isa = PBXBuildFile; fileRef = B1D6FABC1AEE4B36004F45BE /* example.png */; };
+		B1D6FAC01AEF1AD4004F45BE /* VolumeForDrawEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D6FABF1AEF1AD4004F45BE /* VolumeForDrawEntity.m */; };
+		B1D6FAC31AEF1B62004F45BE /* VolumnEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D6FAC21AEF1B62004F45BE /* VolumnEntity.m */; };
+		B1D6FACE1AEF755C004F45BE /* KYBStockChart.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D6FACD1AEF755C004F45BE /* KYBStockChart.m */; };
 		FD1E90141AE5439300BFAC7E /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = FD1E90131AE5439300BFAC7E /* README.md */; };
 		FD4963781AE3F66300C7E21F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FD4963771AE3F66300C7E21F /* main.m */; };
 		FD49637B1AE3F66300C7E21F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FD49637A1AE3F66300C7E21F /* AppDelegate.m */; };
@@ -46,6 +49,12 @@
 		B1D6FA8D1AEE4886004F45BE /* LineForDrawEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineForDrawEntity.h; sourceTree = "<group>"; };
 		B1D6FA8E1AEE4886004F45BE /* LineForDrawEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineForDrawEntity.m; sourceTree = "<group>"; };
 		B1D6FABC1AEE4B36004F45BE /* example.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = example.png; sourceTree = "<group>"; };
+		B1D6FABE1AEF1AD4004F45BE /* VolumeForDrawEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VolumeForDrawEntity.h; sourceTree = "<group>"; };
+		B1D6FABF1AEF1AD4004F45BE /* VolumeForDrawEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VolumeForDrawEntity.m; sourceTree = "<group>"; };
+		B1D6FAC11AEF1B62004F45BE /* VolumnEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VolumnEntity.h; sourceTree = "<group>"; };
+		B1D6FAC21AEF1B62004F45BE /* VolumnEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VolumnEntity.m; sourceTree = "<group>"; };
+		B1D6FACC1AEF755C004F45BE /* KYBStockChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KYBStockChart.h; sourceTree = "<group>"; };
+		B1D6FACD1AEF755C004F45BE /* KYBStockChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KYBStockChart.m; sourceTree = "<group>"; };
 		FD1E900F1AE53EAC00BFAC7E /* KYBStockChart-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KYBStockChart-Prefix.pch"; sourceTree = "<group>"; };
 		FD1E90131AE5439300BFAC7E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
 		FD4963721AE3F66300C7E21F /* KYBStockChart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KYBStockChart.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -108,6 +117,8 @@
 				B1D6FA8C1AEE4886004F45BE /* KCandleForDrawEntity.m */,
 				B1D6FA8D1AEE4886004F45BE /* LineForDrawEntity.h */,
 				B1D6FA8E1AEE4886004F45BE /* LineForDrawEntity.m */,
+				B1D6FABE1AEF1AD4004F45BE /* VolumeForDrawEntity.h */,
+				B1D6FABF1AEF1AD4004F45BE /* VolumeForDrawEntity.m */,
 			);
 			path = Draw;
 			sourceTree = "<group>";
@@ -204,6 +215,8 @@
 				FD4963A21AE3F6B100C7E21F /* KYBStockTrendChart.m */,
 				FD4963A31AE3F6B100C7E21F /* KYBStockVolumeChart.h */,
 				FD4963A41AE3F6B100C7E21F /* KYBStockVolumeChart.m */,
+				B1D6FACC1AEF755C004F45BE /* KYBStockChart.h */,
+				B1D6FACD1AEF755C004F45BE /* KYBStockChart.m */,
 			);
 			path = Chart;
 			sourceTree = "<group>";
@@ -231,6 +244,8 @@
 				FD4963B01AE3F6B100C7E21F /* KYBChartLineEntity.m */,
 				FD4963B11AE3F6B100C7E21F /* TSMAEntity.h */,
 				FD4963B21AE3F6B100C7E21F /* TSMAEntity.m */,
+				B1D6FAC11AEF1B62004F45BE /* VolumnEntity.h */,
+				B1D6FAC21AEF1B62004F45BE /* VolumnEntity.m */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -341,6 +356,8 @@
 				FD4963B51AE3F6B100C7E21F /* KYBStockTrendChart.m in Sources */,
 				FD49637E1AE3F66300C7E21F /* ViewController.m in Sources */,
 				FD4963B71AE3F6B100C7E21F /* DataCommon.m in Sources */,
+				B1D6FACE1AEF755C004F45BE /* KYBStockChart.m in Sources */,
+				B1D6FAC31AEF1B62004F45BE /* VolumnEntity.m in Sources */,
 				FD4963B31AE3F6B100C7E21F /* KYBStockBaseChart.m in Sources */,
 				FD4963BA1AE3F6B100C7E21F /* KCandleEnitity.m in Sources */,
 				B1D6FA8F1AEE4886004F45BE /* KCandleForDrawEntity.m in Sources */,
@@ -348,6 +365,7 @@
 				FD4963BC1AE3F6B100C7E21F /* TSMAEntity.m in Sources */,
 				FD4963B81AE3F6B100C7E21F /* KYBStockChartCommon.m in Sources */,
 				FD4963B41AE3F6B100C7E21F /* KYBStockKCandleChat.m in Sources */,
+				B1D6FAC01AEF1AD4004F45BE /* VolumeForDrawEntity.m in Sources */,
 				FD1E90141AE5439300BFAC7E /* README.md in Sources */,
 				FD49637B1AE3F66300C7E21F /* AppDelegate.m in Sources */,
 				FD4963781AE3F66300C7E21F /* main.m in Sources */,
@@ -475,6 +493,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PREFIX_HEADER = "KYBStockChart/KYBStockChart-Prefix.pch";
 				INFOPLIST_FILE = KYBStockChart/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -486,6 +505,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PREFIX_HEADER = "KYBStockChart/KYBStockChart-Prefix.pch";
 				INFOPLIST_FILE = KYBStockChart/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
