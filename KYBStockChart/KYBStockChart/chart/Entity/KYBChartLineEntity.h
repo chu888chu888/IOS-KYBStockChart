@@ -11,8 +11,8 @@
 #import "TSMAEntity.h"
 
 typedef enum{
-    KYBChartLineType_TS = 0,//分时
-    KYBChartLineType_MA = 1,//均线
+    KYBChartLineType_MA = 0,//均线
+    KYBChartLineType_TS = 1,//分时
     KYBChartLineType_K = 2//k线
 }KYBChartLineType;
 

@@ -7,8 +7,8 @@
 //  K线图 （日K，周K，月K）
 
 #import <UIKit/UIKit.h>
-#import "KYBStockBaseChart.h"
+#import "KYBBaseChart.h"
 
-@interface KYBStockKCandleChat : KYBStockBaseChart
+@interface KYBStockKCandleChat : KYBBaseChart
 
 @end

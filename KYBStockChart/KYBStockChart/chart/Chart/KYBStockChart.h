@@ -10,13 +10,23 @@
 #import "KYBStockChartCommon.h"
 #import "KYBChartLineEntity.h"
 #import "TSMAEntity.h"
-#import "KYBStockBaseChart.h"
+#import "KYBBaseChart.h"
 
 #define DEFAULT_Y_COUNT 3 //可见区域y轴竖线总数
 #define DEFAULT_X_COUNT 4 //可见区域x轴总数
 
+@protocol KYBStockChartDelegate <NSObject>
 
-@interface KYBStockChart : KYBStockBaseChart
+@optional
+-(UIColor *)KYBStockChart:(KYBBaseChart *)chart textColorForLeftGraduationAtRow:(NSInteger)row;
+
+-(UIColor *)KYBStockChart:(KYBBaseChart *)chart textColorForRightGraduationAtRow:(NSInteger)row;
+
+-(NSString *)KYBStockChart:(KYBBaseChart *)chart bottomGraduationAtIndex:(NSInteger)Index;
+
+@end
+
+@interface KYBStockChart : KYBBaseChart
 
 @property (nonatomic,assign) BOOL showYAxis;//是否显示可见区域y轴竖线
 
@@ -47,6 +57,12 @@
 @property (nonatomic,strong) NSMutableArray *lineArrayForDraw;
 
 @property (nonatomic,strong) NSMutableArray *pointArrayForSelect;
+
+@property (nonatomic,assign) NSInteger X_COUNT;
+
+@property (nonatomic,assign) NSInteger Y_COUNT;
+
+@property (nonatomic,weak) id<KYBStockChartDelegate> delegate;
 
 -(instancetype)initWithFrame:(CGRect)frame absRange:(CGFloat)range startYValue:(CGFloat)startYValue;
 

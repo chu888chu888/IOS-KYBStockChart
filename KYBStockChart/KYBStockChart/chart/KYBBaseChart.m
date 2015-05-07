@@ -1,22 +1,14 @@
 //
-//  KYBStockBaseChart.m
+//  KYBBaseChart.m
 //  KYBStockChart
 //
-//  Created by icode on 15/4/16.
-//  Copyright (c) 2015年 sinitek. All rights reserved.
+//  Created by icode on 15/5/4.
+//  Copyright (c) 2015年 zhb1991nm. All rights reserved.
 //
 
-#import "KYBStockBaseChart.h"
-#import "NSString+UILabel.h"
-#import "LineForDrawEntity.h"
+#import "KYBBaseChart.h"
 
-@interface KYBStockBaseChart()
-
-
-@end
-
-@implementation KYBStockBaseChart
-
+@implementation KYBBaseChart
 
 -(void)setEdgeInsets:(UIEdgeInsets)edgeInsets{
     _edgeInsets = edgeInsets;

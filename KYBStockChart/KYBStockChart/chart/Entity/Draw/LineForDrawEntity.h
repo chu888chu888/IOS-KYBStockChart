@@ -21,6 +21,8 @@
 
 @property (nonatomic,assign) KYBChartLineType lineType;
 
+@property (nonatomic,strong) UIColor *fillColor;
+
 -(void)drawLine:(CGContextRef)context;
 
 @end

@@ -15,4 +15,6 @@
 
 +(void)randomTSMAEntity:(NSInteger)count array:(NSMutableArray **)array avArray:(NSMutableArray **)avArray;
 
++(NSString *)dateStringByTimeStamp:(long)longValue;
+
 @end

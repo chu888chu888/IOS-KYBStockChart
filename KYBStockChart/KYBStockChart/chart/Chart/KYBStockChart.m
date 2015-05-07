@@ -45,9 +45,11 @@
     _graduationFont = [UIFont systemFontOfSize:8];
     _lineNameFont = [UIFont systemFontOfSize:10];
     [self setEdgeInsets:UIEdgeInsetsMake(10, 40, 20, 20)];
-    _leftGraduationArray = [NSMutableArray arrayWithCapacity:DEFAULT_X_COUNT + 1];
-    _rightGraduationArray = [NSMutableArray arrayWithCapacity:DEFAULT_X_COUNT + 1];
+    _leftGraduationArray = [NSMutableArray array];
+    _rightGraduationArray = [NSMutableArray array];
     _touchPint = self.originPoint;
+    _X_COUNT = DEFAULT_X_COUNT;
+    _Y_COUNT = DEFAULT_Y_COUNT;
 }
 
 -(void)refresh{
@@ -63,6 +65,43 @@
                        startPoint:self.originPoint
                          endPoint:self.leftTopPoint
                         lineColor:Axis0Color width:0.2];
+    
+    if (self.xLen != 0 && self.xStepLen != 0) {
+        NSInteger n = floorf(self.xLen/4/self.xStepLen);
+        CGFloat bottomGraduationStepLen = n * self.xStepLen;
+        
+        NSInteger n1 = self.xLen / bottomGraduationStepLen + 1;//总轴条数
+        
+        for(int i = 0 ; i < n1; i ++){
+            CGFloat xPosition = self.originPoint.x + bottomGraduationStepLen * i;
+            if (i > 0) {
+                [KYBStockChartCommon drawLine:context
+                                   startPoint:CGPointMake(xPosition, self.originPoint.y)
+                                     endPoint:CGPointMake(xPosition, self.leftTopPoint.y)
+                                    lineColor:AxisColor width:0.2];
+            }
+            if (_delegate && [_delegate respondsToSelector:@selector(KYBStockChart:bottomGraduationAtIndex:)]) {
+                NSString *valStr = [_delegate KYBStockChart:self bottomGraduationAtIndex:i * n];
+                
+                CGSize titleSize = [valStr fixSizeWithFont:_graduationFont];
+                CGFloat xStrPosition;
+                if (i == 0) {
+                    xStrPosition = xPosition;
+                }else{
+                    xStrPosition = xPosition - titleSize.width / 2;
+                }
+                
+                CGRect titleRect = CGRectMake(xStrPosition,
+                                              self.originPoint.y  + 5,
+                                              titleSize.width,
+                                              titleSize.height);
+                [valStr drawInRect:titleRect withFont:_graduationFont lineBreakMode:NSLineBreakByClipping alignment:NSTextAlignmentRight];
+            }
+        }
+    }
+    
+    
+    
 #pragma mark 画x轴
     [KYBStockChartCommon drawLine:context
                        startPoint:CGPointMake(self.originPoint.x, self.originPoint.y)
@@ -70,8 +109,8 @@
                         lineColor:Axis0Color width:0.2];
     //画纵轴线
     if (_showYAxis) {
-        for(int i = 1 ; i <= DEFAULT_Y_COUNT ; i ++){
-            CGFloat xPosition = self.originPoint.x + self.xLen / (DEFAULT_Y_COUNT + 1) * i;
+        for(int i = 1 ; i <= _Y_COUNT ; i ++){
+            CGFloat xPosition = self.originPoint.x + self.xLen / (_Y_COUNT + 1) * i;
             [KYBStockChartCommon drawLine:context
                                startPoint:CGPointMake(xPosition, self.originPoint.y)
                                  endPoint:CGPointMake(xPosition, self.leftTopPoint.y)
@@ -81,26 +120,25 @@
     
     CGFloat dashPattern[]= {4, 4};
     CGContextSetLineDash(context, 0.0, dashPattern, 2); //虚线效果
-    for(int i = 1 ; i <= DEFAULT_X_COUNT ; i ++){
-        CGFloat yPosition = self.originPoint.y - self.yLen / DEFAULT_X_COUNT * i;
+    for(int i = 1 ; i <= _X_COUNT ; i ++){
+        CGFloat yPosition = self.originPoint.y - self.yLen / _X_COUNT * i;
         [KYBStockChartCommon drawLine:context
                            startPoint:CGPointMake(self.originPoint.x, yPosition)
                              endPoint:CGPointMake(self.rightBottomPoint.x, yPosition)
                             lineColor:AxisColor
-                                width:i == DEFAULT_X_COUNT ? 0.1 : 0.2];
+                                width:i == _X_COUNT ? 0.1 : 0.2];
     }
     
 #pragma mark 画左刻度
     for (int i = 0; i < _leftGraduationArray.count; i++) {
-        if (i < 2) {
-            [StockGreen set];
-        }else if (i == 2){
-            [XYTextColor set];
+        if (_delegate && [_delegate respondsToSelector:@selector(KYBStockChart:textColorForLeftGraduationAtRow:)]) {
+            UIColor *color = [_delegate KYBStockChart:self textColorForLeftGraduationAtRow:i];
+            [color set];
         }else{
-            [StockRed set];
+            [XYTextColor set];
         }
         NSString *valStr = _leftGraduationArray[i];
-        CGFloat yPosition = self.originPoint.y - self.yLen / DEFAULT_X_COUNT * i;
+        CGFloat yPosition = self.originPoint.y - self.yLen / _X_COUNT * i;
         CGSize titleSize = [valStr fixSizeWithFont:_graduationFont];
         CGRect titleRect = CGRectMake(self.edgeInsets.left - titleSize.width - 5,
                                       yPosition - (titleSize.height)/2,
@@ -111,15 +149,14 @@
     
 #pragma mark 画右刻度
     for (int i = 0; i < _rightGraduationArray.count; i++) {
-        if (i < 2) {
-            [StockGreen set];
-        }else if (i == 2){
-            [XYTextColor set];
+        if (_delegate && [_delegate respondsToSelector:@selector(KYBStockChart:textColorForRightGraduationAtRow:)]) {
+            UIColor *color = [_delegate KYBStockChart:self textColorForLeftGraduationAtRow:i];
+            [color set];
         }else{
-            [StockRed set];
+            [XYTextColor set];
         }
         NSString *valStr = _rightGraduationArray[i];
-        CGFloat yPosition = self.originPoint.y - self.yLen / DEFAULT_X_COUNT * i;
+        CGFloat yPosition = self.originPoint.y - self.yLen / _X_COUNT * i;
         CGSize titleSize = [valStr fixSizeWithFont:_graduationFont];
         CGRect titleRect = CGRectMake(self.rightBottomPoint.x - titleSize.width,
                                       yPosition - (titleSize.height)/2,
@@ -140,7 +177,7 @@
         }else if(i == _bottomGraduationArray.count - 1){
             xPosition = self.rightBottomPoint.x - titleSize.width;
         }else{
-            xPosition = self.originPoint.x + self.xLen / (DEFAULT_Y_COUNT + 1) * i - titleSize.width / 2;
+            xPosition = self.originPoint.x + self.xLen / (_Y_COUNT + 1) * i - titleSize.width / 2;
         }
         
         CGRect titleRect = CGRectMake(xPosition,
@@ -201,14 +238,43 @@
         if (lineEntities.count == 0) return;
         NSObject *obj = lineEntities.firstObject;
         if ([obj isKindOfClass:[LineForDrawEntity class]]) {
-            for (LineForDrawEntity *entity in lineEntities) {
-                [entity drawLine:context];
+            LineForDrawEntity *_obj = (LineForDrawEntity*)obj;
+            switch (_obj.lineType) {
+                case KYBChartLineType_MA:
+                    for (LineForDrawEntity *entity in lineEntities) {
+                        [entity drawLine:context];
+                    }
+                    break;
+                case KYBChartLineType_TS:{
+                    if (lineEntities.count == 0) {
+                        break;
+                    }
+                    CGContextSetLineWidth(context, 0.0f);
+                    LineForDrawEntity *firstLineForDrawEntity = lineEntities.firstObject;
+                    CGContextMoveToPoint(context, firstLineForDrawEntity.startPoint.x, firstLineForDrawEntity.startPoint.y);
+                    for (LineForDrawEntity *entity in lineEntities) {
+                        CGContextAddLineToPoint(context, entity.endPoint.x, entity.endPoint.y);
+                    }
+                    CGContextAddLineToPoint(context, self.rightBottomPoint.x, self.rightBottomPoint.y);
+                    CGContextAddLineToPoint(context, self.originPoint.x,self.originPoint.y);
+                    CGContextAddLineToPoint(context, firstLineForDrawEntity.startPoint.x,firstLineForDrawEntity.startPoint.y);
+                    CGContextClosePath(context);
+                    CGContextSetFillColorWithColor(context, firstLineForDrawEntity.fillColor.CGColor);
+                    CGContextDrawPath(context, kCGPathFill);
+                    for (LineForDrawEntity *entity in lineEntities) {
+                        [entity drawLine:context];
+                    }
+                }
+                    break;
+                default:
+                    break;
             }
+            
         }
     }
     
     //测试画蜡烛线
-    [KYBStockChartCommon drawCandle:context rect:CGRectMake(self.originPoint.x + 5, self.leftTopPoint.y + 5, 5, 20) top:3 bottom:3 color:StockGreen];
+//    [KYBStockChartCommon drawCandle:context rect:CGRectMake(self.originPoint.x + 5, self.leftTopPoint.y + 5, 5, 20) top:3 bottom:3 color:StockGreen];
     
 }
 

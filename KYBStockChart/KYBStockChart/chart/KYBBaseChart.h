@@ -1,15 +1,14 @@
 //
-//  KYBStockBaseChart.h
+//  KYBBaseChart.h
 //  KYBStockChart
 //
-//  Created by icode on 15/4/16.
-//  Copyright (c) 2015年 sinitek. All rights reserved.
+//  Created by icode on 15/5/4.
+//  Copyright (c) 2015年 zhb1991nm. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-
-@interface KYBStockBaseChart : UIView
+@interface KYBBaseChart : UIView
 
 @property (nonatomic,assign) NSInteger pointCount;//结点个数
 

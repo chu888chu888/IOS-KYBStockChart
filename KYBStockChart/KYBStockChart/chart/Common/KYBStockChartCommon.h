@@ -34,4 +34,13 @@
 
 + (void)drawText2:(CGContextRef)context text:(NSString*)text color:(UIColor *)color fontSize:(CGFloat)fontSize;
 
+//画正菱形
++ (void)drawDiamond:(CGContextRef)context atCenterPoint:(CGPoint)center r:(CGFloat)r fillColor:(UIColor *)fillColor;
+
+//画正圆
++ (void)drawCircle:(CGContextRef)context atCenterPoint:(CGPoint)center r:(CGFloat)r fillColor:(UIColor *)fillColor;
+
+//画正方
++ (void)drawSquare:(CGContextRef)context atCenterPoint:(CGPoint)center r:(CGFloat)r fillColor:(UIColor *)fillColor;
+
 @end

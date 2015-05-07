@@ -7,12 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B133B1C31AFA096700F7536C /* balance.json in Resources */ = {isa = PBXBuildFile; fileRef = B133B1C21AFA096700F7536C /* balance.json */; };
+		B133B1C51AFA097400F7536C /* code300.json in Resources */ = {isa = PBXBuildFile; fileRef = B133B1C41AFA097400F7536C /* code300.json */; };
+		B133B1C71AFA09CC00F7536C /* detail_count.json in Resources */ = {isa = PBXBuildFile; fileRef = B133B1C61AFA09CC00F7536C /* detail_count.json */; };
+		B137A11E1AFB630200BE78E4 /* KYBChartReferenceView.m in Sources */ = {isa = PBXBuildFile; fileRef = B137A11D1AFB630200BE78E4 /* KYBChartReferenceView.m */; };
 		B1D6FA8F1AEE4886004F45BE /* KCandleForDrawEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D6FA8C1AEE4886004F45BE /* KCandleForDrawEntity.m */; };
 		B1D6FA901AEE4886004F45BE /* LineForDrawEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D6FA8E1AEE4886004F45BE /* LineForDrawEntity.m */; };
 		B1D6FABD1AEE4B36004F45BE /* example.png in Resources */ = {isa = PBXBuildFile; fileRef = B1D6FABC1AEE4B36004F45BE /* example.png */; };
 		B1D6FAC01AEF1AD4004F45BE /* VolumeForDrawEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D6FABF1AEF1AD4004F45BE /* VolumeForDrawEntity.m */; };
 		B1D6FAC31AEF1B62004F45BE /* VolumnEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D6FAC21AEF1B62004F45BE /* VolumnEntity.m */; };
 		B1D6FACE1AEF755C004F45BE /* KYBStockChart.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D6FACD1AEF755C004F45BE /* KYBStockChart.m */; };
+		B1D6FB821AF73F82004F45BE /* KYBPortfolioChart.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D6FB811AF73F82004F45BE /* KYBPortfolioChart.m */; };
+		B1D6FB851AF73FB0004F45BE /* KYBBaseChart.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D6FB841AF73FB0004F45BE /* KYBBaseChart.m */; };
+		B1FB25031AFAFDA900E09C42 /* KYBChartControlBar.m in Sources */ = {isa = PBXBuildFile; fileRef = B1FB25021AFAFDA900E09C42 /* KYBChartControlBar.m */; };
 		FD1E90141AE5439300BFAC7E /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = FD1E90131AE5439300BFAC7E /* README.md */; };
 		FD4963781AE3F66300C7E21F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FD4963771AE3F66300C7E21F /* main.m */; };
 		FD49637B1AE3F66300C7E21F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FD49637A1AE3F66300C7E21F /* AppDelegate.m */; };
@@ -21,7 +28,6 @@
 		FD4963831AE3F66300C7E21F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD4963821AE3F66300C7E21F /* Images.xcassets */; };
 		FD4963861AE3F66300C7E21F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD4963841AE3F66300C7E21F /* LaunchScreen.xib */; };
 		FD4963921AE3F66300C7E21F /* KYBStockChartTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FD4963911AE3F66300C7E21F /* KYBStockChartTests.m */; };
-		FD4963B31AE3F6B100C7E21F /* KYBStockBaseChart.m in Sources */ = {isa = PBXBuildFile; fileRef = FD49639E1AE3F6B100C7E21F /* KYBStockBaseChart.m */; };
 		FD4963B41AE3F6B100C7E21F /* KYBStockKCandleChat.m in Sources */ = {isa = PBXBuildFile; fileRef = FD4963A01AE3F6B100C7E21F /* KYBStockKCandleChat.m */; };
 		FD4963B51AE3F6B100C7E21F /* KYBStockTrendChart.m in Sources */ = {isa = PBXBuildFile; fileRef = FD4963A21AE3F6B100C7E21F /* KYBStockTrendChart.m */; };
 		FD4963B61AE3F6B100C7E21F /* KYBStockVolumeChart.m in Sources */ = {isa = PBXBuildFile; fileRef = FD4963A41AE3F6B100C7E21F /* KYBStockVolumeChart.m */; };
@@ -44,6 +50,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B133B1C21AFA096700F7536C /* balance.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = balance.json; sourceTree = "<group>"; };
+		B133B1C41AFA097400F7536C /* code300.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = code300.json; sourceTree = "<group>"; };
+		B133B1C61AFA09CC00F7536C /* detail_count.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = detail_count.json; sourceTree = "<group>"; };
+		B137A11C1AFB630200BE78E4 /* KYBChartReferenceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KYBChartReferenceView.h; sourceTree = "<group>"; };
+		B137A11D1AFB630200BE78E4 /* KYBChartReferenceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KYBChartReferenceView.m; sourceTree = "<group>"; };
 		B1D6FA8B1AEE4886004F45BE /* KCandleForDrawEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCandleForDrawEntity.h; sourceTree = "<group>"; };
 		B1D6FA8C1AEE4886004F45BE /* KCandleForDrawEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCandleForDrawEntity.m; sourceTree = "<group>"; };
 		B1D6FA8D1AEE4886004F45BE /* LineForDrawEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineForDrawEntity.h; sourceTree = "<group>"; };
@@ -55,6 +66,12 @@
 		B1D6FAC21AEF1B62004F45BE /* VolumnEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VolumnEntity.m; sourceTree = "<group>"; };
 		B1D6FACC1AEF755C004F45BE /* KYBStockChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KYBStockChart.h; sourceTree = "<group>"; };
 		B1D6FACD1AEF755C004F45BE /* KYBStockChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KYBStockChart.m; sourceTree = "<group>"; };
+		B1D6FB801AF73F82004F45BE /* KYBPortfolioChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KYBPortfolioChart.h; sourceTree = "<group>"; };
+		B1D6FB811AF73F82004F45BE /* KYBPortfolioChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KYBPortfolioChart.m; sourceTree = "<group>"; };
+		B1D6FB831AF73FB0004F45BE /* KYBBaseChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KYBBaseChart.h; sourceTree = "<group>"; };
+		B1D6FB841AF73FB0004F45BE /* KYBBaseChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KYBBaseChart.m; sourceTree = "<group>"; };
+		B1FB25011AFAFDA900E09C42 /* KYBChartControlBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KYBChartControlBar.h; sourceTree = "<group>"; };
+		B1FB25021AFAFDA900E09C42 /* KYBChartControlBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KYBChartControlBar.m; sourceTree = "<group>"; };
 		FD1E900F1AE53EAC00BFAC7E /* KYBStockChart-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KYBStockChart-Prefix.pch"; sourceTree = "<group>"; };
 		FD1E90131AE5439300BFAC7E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
 		FD4963721AE3F66300C7E21F /* KYBStockChart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KYBStockChart.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -70,8 +87,6 @@
 		FD49638B1AE3F66300C7E21F /* KYBStockChartTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KYBStockChartTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD4963901AE3F66300C7E21F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FD4963911AE3F66300C7E21F /* KYBStockChartTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KYBStockChartTests.m; sourceTree = "<group>"; };
-		FD49639D1AE3F6B100C7E21F /* KYBStockBaseChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KYBStockBaseChart.h; sourceTree = "<group>"; };
-		FD49639E1AE3F6B100C7E21F /* KYBStockBaseChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KYBStockBaseChart.m; sourceTree = "<group>"; };
 		FD49639F1AE3F6B100C7E21F /* KYBStockKCandleChat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KYBStockKCandleChat.h; sourceTree = "<group>"; };
 		FD4963A01AE3F6B100C7E21F /* KYBStockKCandleChat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KYBStockKCandleChat.m; sourceTree = "<group>"; };
 		FD4963A11AE3F6B100C7E21F /* KYBStockTrendChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KYBStockTrendChart.h; sourceTree = "<group>"; };
@@ -110,6 +125,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B137A11B1AFB62D400BE78E4 /* ReferenceView */ = {
+			isa = PBXGroup;
+			children = (
+				B137A11C1AFB630200BE78E4 /* KYBChartReferenceView.h */,
+				B137A11D1AFB630200BE78E4 /* KYBChartReferenceView.m */,
+			);
+			name = ReferenceView;
+			sourceTree = "<group>";
+		};
 		B1D6FA8A1AEE4886004F45BE /* Draw */ = {
 			isa = PBXGroup;
 			children = (
@@ -129,6 +153,15 @@
 				B1D6FABC1AEE4B36004F45BE /* example.png */,
 			);
 			path = img;
+			sourceTree = "<group>";
+		};
+		B1D6FB7F1AF73F3C004F45BE /* Portfolio */ = {
+			isa = PBXGroup;
+			children = (
+				B1D6FB801AF73F82004F45BE /* KYBPortfolioChart.h */,
+				B1D6FB811AF73F82004F45BE /* KYBPortfolioChart.m */,
+			);
+			path = Portfolio;
 			sourceTree = "<group>";
 		};
 		FD4963691AE3F66300C7E21F = {
@@ -173,6 +206,9 @@
 				FD4963761AE3F66300C7E21F /* Info.plist */,
 				FD4963771AE3F66300C7E21F /* main.m */,
 				FD1E90131AE5439300BFAC7E /* README.md */,
+				B133B1C21AFA096700F7536C /* balance.json */,
+				B133B1C41AFA097400F7536C /* code300.json */,
+				B133B1C61AFA09CC00F7536C /* detail_count.json */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -197,9 +233,12 @@
 		FD49639B1AE3F6B100C7E21F /* chart */ = {
 			isa = PBXGroup;
 			children = (
+				B1D6FB7F1AF73F3C004F45BE /* Portfolio */,
 				FD49639C1AE3F6B100C7E21F /* Chart */,
 				FD4963A51AE3F6B100C7E21F /* Common */,
 				FD4963AC1AE3F6B100C7E21F /* Entity */,
+				B1D6FB831AF73FB0004F45BE /* KYBBaseChart.h */,
+				B1D6FB841AF73FB0004F45BE /* KYBBaseChart.m */,
 			);
 			path = chart;
 			sourceTree = "<group>";
@@ -207,8 +246,7 @@
 		FD49639C1AE3F6B100C7E21F /* Chart */ = {
 			isa = PBXGroup;
 			children = (
-				FD49639D1AE3F6B100C7E21F /* KYBStockBaseChart.h */,
-				FD49639E1AE3F6B100C7E21F /* KYBStockBaseChart.m */,
+				B137A11B1AFB62D400BE78E4 /* ReferenceView */,
 				FD49639F1AE3F6B100C7E21F /* KYBStockKCandleChat.h */,
 				FD4963A01AE3F6B100C7E21F /* KYBStockKCandleChat.m */,
 				FD4963A11AE3F6B100C7E21F /* KYBStockTrendChart.h */,
@@ -217,6 +255,8 @@
 				FD4963A41AE3F6B100C7E21F /* KYBStockVolumeChart.m */,
 				B1D6FACC1AEF755C004F45BE /* KYBStockChart.h */,
 				B1D6FACD1AEF755C004F45BE /* KYBStockChart.m */,
+				B1FB25011AFAFDA900E09C42 /* KYBChartControlBar.h */,
+				B1FB25021AFAFDA900E09C42 /* KYBChartControlBar.m */,
 			);
 			path = Chart;
 			sourceTree = "<group>";
@@ -330,6 +370,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B133B1C71AFA09CC00F7536C /* detail_count.json in Resources */,
+				B133B1C51AFA097400F7536C /* code300.json in Resources */,
+				B133B1C31AFA096700F7536C /* balance.json in Resources */,
 				FD4963811AE3F66300C7E21F /* Main.storyboard in Resources */,
 				FD4963861AE3F66300C7E21F /* LaunchScreen.xib in Resources */,
 				B1D6FABD1AEE4B36004F45BE /* example.png in Resources */,
@@ -358,17 +401,20 @@
 				FD4963B71AE3F6B100C7E21F /* DataCommon.m in Sources */,
 				B1D6FACE1AEF755C004F45BE /* KYBStockChart.m in Sources */,
 				B1D6FAC31AEF1B62004F45BE /* VolumnEntity.m in Sources */,
-				FD4963B31AE3F6B100C7E21F /* KYBStockBaseChart.m in Sources */,
 				FD4963BA1AE3F6B100C7E21F /* KCandleEnitity.m in Sources */,
 				B1D6FA8F1AEE4886004F45BE /* KCandleForDrawEntity.m in Sources */,
 				B1D6FA901AEE4886004F45BE /* LineForDrawEntity.m in Sources */,
 				FD4963BC1AE3F6B100C7E21F /* TSMAEntity.m in Sources */,
+				B1D6FB821AF73F82004F45BE /* KYBPortfolioChart.m in Sources */,
+				B137A11E1AFB630200BE78E4 /* KYBChartReferenceView.m in Sources */,
 				FD4963B81AE3F6B100C7E21F /* KYBStockChartCommon.m in Sources */,
 				FD4963B41AE3F6B100C7E21F /* KYBStockKCandleChat.m in Sources */,
 				B1D6FAC01AEF1AD4004F45BE /* VolumeForDrawEntity.m in Sources */,
 				FD1E90141AE5439300BFAC7E /* README.md in Sources */,
 				FD49637B1AE3F66300C7E21F /* AppDelegate.m in Sources */,
 				FD4963781AE3F66300C7E21F /* main.m in Sources */,
+				B1D6FB851AF73FB0004F45BE /* KYBBaseChart.m in Sources */,
+				B1FB25031AFAFDA900E09C42 /* KYBChartControlBar.m in Sources */,
 				FD4963B61AE3F6B100C7E21F /* KYBStockVolumeChart.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>20BF0BBD-13F6-4415-8308-B2A686379ED7</string>
 	<key>IDESourceControlProjectName</key>
-	<string>KYBStockChart</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>F4284E0471973E32193F38598711F25C8213E540</key>
 		<string>https://github.com/zhb1991nm/KYBStockChart.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>KYBStockChart/KYBStockChart.xcodeproj</string>
+	<string>KYBStockChart/KYBStockChart.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>F4284E0471973E32193F38598711F25C8213E540</key>

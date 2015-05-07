@@ -31,4 +31,57 @@
     }
 }
 
++(NSString *)dateStringByTimeStamp:(long)longValue{
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:(longValue / 1000)];
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];//设置成中国阳历
+    NSDateComponents *comps = [[NSDateComponents alloc] init];
+    NSInteger unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSWeekdayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;//这句我也不明白具体时用来做什么。。。
+    comps = [calendar components:unitFlags fromDate:date];
+    long day=[comps day];//获取日期对应的长整形字符串
+    long month=[comps month];//获取月对应的长整形字符串
+    NSString *monthString;
+    switch (month) {
+        case 1:
+            monthString = @"一月";
+            break;
+        case 2:
+            monthString = @"二月";
+            break;
+        case 3:
+            monthString = @"三月";
+            break;
+        case 4:
+            monthString = @"四月";
+            break;
+        case 5:
+            monthString = @"五月";
+            break;
+        case 6:
+            monthString = @"六月";
+            break;
+        case 7:
+            monthString = @"七月";
+            break;
+        case 8:
+            monthString = @"八月";
+            break;
+        case 9:
+            monthString = @"九月";
+            break;
+        case 10:
+            monthString = @"十月";
+            break;
+        case 11:
+            monthString = @"十一月";
+            break;
+        case 12:
+            monthString = @"十二月";
+            break;
+            
+        default:
+            break;
+    }
+    return [NSString stringWithFormat:@"%ld.%@",day,monthString];
+}
+
 @end

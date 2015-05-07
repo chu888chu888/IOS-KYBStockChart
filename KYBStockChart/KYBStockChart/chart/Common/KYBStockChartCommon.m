@@ -90,4 +90,44 @@
     [[self class] drawRect:context rect:CGRectMake(rect.origin.x, rect.origin.y + top, rect.size.width, rect.size.height - top - bottom) fillColor:color];
     [[self class] drawLine:context startPoint:CGPointMake(CGRectGetMidX(rect), CGRectGetMinY(rect)) endPoint:CGPointMake(CGRectGetMidX(rect), CGRectGetMaxY(rect)) lineColor:color width:1];
 }
+
++ (void)drawDiamond:(CGContextRef)context atCenterPoint:(CGPoint)center r:(CGFloat)r fillColor:(UIColor *)fillColor{//画正菱形
+    CGContextSetLineWidth(context, 0.0);
+    
+    CGContextSetStrokeColorWithColor(context, [UIColor clearColor].CGColor);
+    CGContextMoveToPoint(context, center.x - r, center.y);
+    CGContextAddLineToPoint(context, center.x, center.y - r);
+    CGContextAddLineToPoint(context, center.x + r, center.y);
+    CGContextAddLineToPoint(context, center.x, center.y + r);
+    CGContextAddLineToPoint(context, center.x - r, center.y);
+    CGContextSetFillColorWithColor(context, fillColor.CGColor);
+    CGContextFillPath(context);
+}
+
+//画正圆
++ (void)drawCircle:(CGContextRef)context atCenterPoint:(CGPoint)point r:(CGFloat)r fillColor:(UIColor *)fillColor{
+    
+    CGContextSetStrokeColorWithColor(context, [UIColor clearColor].CGColor);
+    
+    CGRect rectangle = CGRectMake(point.x - 2, point.y - 2,2 * r,2 * r);
+    
+    CGContextStrokePath(context);
+    
+    CGContextSetFillColorWithColor(context, fillColor.CGColor);
+    
+    CGContextFillEllipseInRect(context, rectangle);
+}
+
+//画正方
++ (void)drawSquare:(CGContextRef)context atCenterPoint:(CGPoint)point r:(CGFloat)r fillColor:(UIColor *)fillColor{
+    
+    CGContextSetLineWidth(context, 0.0);
+    CGContextSetStrokeColorWithColor(context, [UIColor clearColor].CGColor);
+    CGRect rectangle = CGRectMake(point.x - r,point.y - r,r * 2,r * 2);
+    CGContextAddRect(context, rectangle);
+    CGContextStrokePath(context);
+    CGContextSetFillColorWithColor(context, fillColor.CGColor);
+    CGContextFillRect(context, rectangle);
+}
+
 @end

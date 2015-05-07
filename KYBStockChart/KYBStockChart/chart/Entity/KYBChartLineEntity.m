@@ -18,32 +18,37 @@
         self.lineColor = color;
         self.thickness = thickness;
         self.dataArray = dataArray;
-        if (type == KYBChartLineType_K) {
+        if (_type == KYBChartLineType_K) {
             self.totalPointCount = dataArray.count;
         }else{
-            self.totalPointCount = totalPointCount;
-        }
-        if (dataArray) {
-            CGFloat min = 0;
-            CGFloat max = 0;
-            if (type == KYBChartLineType_MA || type == KYBChartLineType_TS) {
-                for (TSMAEntity * entity in dataArray) {
-                    if (entity == dataArray.firstObject) {
-                        min = max = entity.value;
-                    }else{
-                        if (entity.value > max) {
-                            max = entity.value;
-                        }else if (entity.value < min){
-                            min = entity.value;
-                        }
-                    }
-                }
-            }
-            self.max = max;
-            self.min = min;
+            self.totalPointCount = _totalPointCount;
         }
     }
     return self;
+}
+
+-(void)setDataArray:(NSArray *)dataArray{
+    if (!dataArray) return;
+    _dataArray = dataArray;
+    if (dataArray) {
+        CGFloat min = 0;
+        CGFloat max = 0;
+        if (_type == KYBChartLineType_MA || _type == KYBChartLineType_TS) {
+            for (TSMAEntity * entity in dataArray) {
+                if (entity == dataArray.firstObject) {
+                    min = max = entity.value;
+                }else{
+                    if (entity.value > max) {
+                        max = entity.value;
+                    }else if (entity.value < min){
+                        min = entity.value;
+                    }
+                }
+            }
+        }
+        self.max = max;
+        self.min = min;
+    }
 }
 
 @end
