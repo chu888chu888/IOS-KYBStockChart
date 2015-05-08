@@ -11,6 +11,8 @@
 #import "KYBChartControlBar.h"
 #import "LineForDrawEntity.h"
 #import "DataCommon.h"
+#import "PointForSelectEntity.h"
+#import "KYBChartReferenceView.h"
 
 @interface KYBPortfolioChart()<KYBStockChartDelegate,KYBChartControlBarDelegate>
 
@@ -30,7 +32,25 @@
 
 @property (nonatomic,assign) NSRange selectedRange;
 
-//@property (nonatomic,strong) NSArray *selectedArray;
+@property (nonatomic,weak) KYBChartReferenceView *referenceView;
+
+@property (nonatomic,strong) ChartReferencePoint *code300Point;
+
+@property (nonatomic,strong) ChartReferencePoint *balancePoint;
+
+@property (nonatomic,assign) NSInteger selectedIndex;
+
+@property (nonatomic,assign) NSInteger lastSelectedIndex;
+
+@property (nonatomic,assign) CGPoint currentPouchPoint;
+
+@property (nonatomic,strong) UIView *floatDataView;
+
+@property (nonatomic,strong) UILabel *dateLabel;
+
+@property (nonatomic,strong) UILabel *code300Label;
+
+@property (nonatomic,strong) UILabel *balanceLabel;
 
 @end
 
@@ -46,6 +66,7 @@
         self.code300Array = code300Array;
         self.detailCountArray = detailCountArray;
         [self initSubViews];
+        [self initGesture];
         _selectedRange = NSMakeRange(0, code300Array.count);
         [self prepareRangeDataForShow];
         [self prepareForControlBarChart];
@@ -80,8 +101,89 @@
     [controlBar addSubview:controlBarChart];
     [controlBar sendSubviewToBack:controlBarChart];
     _controlBarChart = controlBarChart;
+    
+    KYBChartReferenceView *referenceView = [[KYBChartReferenceView alloc] initWithFrame:portfolioChart.frame];
+    referenceView.edgeInsets = portfolioChart.edgeInsets;
+    referenceView.referenceType = KYBChartReferenceViewTypeVertical;
+    referenceView.referenceLineColor = [UIColor darkGrayColor];
+    referenceView.referenceLineThickness = 0.5f;
+    
+    _code300Point = [referenceView insertChartReferencePointWithPointType:KYBChartPointTypeCircle pointCenterPosition:CGPointMake(10, 10) radius:2 pointColor:UIColorFromRGB(0x8FB5EC) drawShadow:YES shadowColor:UIColorFromRGBAndAlpha(0x8FB5EC, 0.3f)];//300
+    
+    _balancePoint = [referenceView insertChartReferencePointWithPointType:KYBChartPointTypeSquare pointCenterPosition:CGPointMake(10, 30) radius:2 pointColor:UIColorFromRGB(0x8FB5EC) drawShadow:YES shadowColor:UIColorFromRGBAndAlpha(0x8FB5EC, 0.3f)];//净值
+    [self addSubview:referenceView];
+    _referenceView = referenceView;
+    
+    [self addSubview:[self floatDataView]];
 }
 
+-(void)initGesture{
+    UILongPressGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
+    longPressGesture.minimumPressDuration = 0.5;
+    [self addGestureRecognizer:longPressGesture];
+}
+
+-(void)handleLongPress:(UIGestureRecognizer *)gestureRecognizer{
+    CGPoint touchPoint = [gestureRecognizer locationInView:self.portfolioChart];
+    _currentPouchPoint = touchPoint;
+    if (gestureRecognizer.state == UIGestureRecognizerStateBegan || gestureRecognizer.state == UIGestureRecognizerStateChanged) {
+        CGFloat touchPointX = touchPoint.x;
+        CGFloat touchPointY = touchPoint.y;
+        if (touchPointX < self.portfolioChart.originPoint.x) {
+            touchPointX = self.portfolioChart.originPoint.x;
+        }else if (touchPointX > self.portfolioChart.rightBottomPoint.x){
+            touchPointX = self.portfolioChart.rightBottomPoint.x;
+        }
+        
+        if (touchPointY < self.portfolioChart.leftTopPoint.y) {
+            touchPointY = self.portfolioChart.leftTopPoint.y;
+        }else if (touchPoint.y > self.portfolioChart.originPoint.y){
+            touchPointY = self.portfolioChart.originPoint.y;
+        }
+        _referenceView.showContent = YES;
+        self.floatDataView.hidden = NO;
+        self.lastSelectedIndex = self.selectedIndex;
+        self.selectedIndex = [self.portfolioChart closeIndexWithTouchPoint:CGPointMake(touchPointX, touchPointY)];
+    }else{
+        _referenceView.showContent = NO;
+        self.floatDataView.hidden = YES;
+    }
+    [self refreshReferenView];
+}
+
+-(void)refreshReferenView{
+    PointForSelectEntity *selectedPoint_balance = self.balanceLineEntity.selectedPointArray[self.selectedIndex];
+    PointForSelectEntity *selectedPoint_code300 = self.code300LineEntity.selectedPointArray[self.selectedIndex];
+    self.code300Point.centerPoint = selectedPoint_balance.point;
+    self.balancePoint.centerPoint = selectedPoint_code300.point;
+    _referenceView.referenceLineCrossPoint = selectedPoint_balance.point;
+    [_referenceView setNeedsDisplay];
+    if (self.lastSelectedIndex != self.selectedIndex){
+        DayValueObject *dayValue = dayValueArray[self.selectedIndex];
+        _dateLabel.text = [DataCommon dateStringByTimeStamp:dayValue.dateNumber.longValue];
+        _code300Label.text = [NSString stringWithFormat:@"沪深300指数:%.2f (%.2f%%)",dayValue.code300Value,dayValue.code300PerValue * 100];
+        _balanceLabel.text = [NSString stringWithFormat:@"组合净值:%.2f (%.2f%%)",dayValue.balanceValue,dayValue.balancePerValue * 100];
+        
+        [UIView animateWithDuration:0.1f animations:^{
+            if (!self.floatDataView.hidden) {
+                CGFloat floatDataViewOriginX = 0;
+                CGFloat floatDataViewOriginY = self.currentPouchPoint.y;
+                if (self.currentPouchPoint.y > self.portfolioChart.frame.size.height - self.floatDataView.frame.size.height) {
+                    floatDataViewOriginY = self.portfolioChart.frame.size.height - self.floatDataView.frame.size.height;
+                }
+                if (selectedPoint_balance.point.x > self.floatDataView.frame.size.width + 10) {
+                    floatDataViewOriginX = selectedPoint_balance.point.x - 10 - self.floatDataView.frame.size.width;
+                }else{
+                    floatDataViewOriginX = selectedPoint_balance.point.x + 10;
+                }
+                CGPoint floatDataViewOrigin_portfolioChart = CGPointMake(floatDataViewOriginX, floatDataViewOriginY);
+                CGPoint floatDataViewOrigin = [self.portfolioChart convertPoint:floatDataViewOrigin_portfolioChart toView:self];
+                
+                self.floatDataView.frame = CGRectMake(floatDataViewOrigin.x, floatDataViewOrigin.y, self.floatDataView.frame.size.width, self.floatDataView.frame.size.height);
+            }
+        }];
+    }
+}
 
 -(void)prepareRangeDataForShow{
     if (!dayValueArray) {
@@ -187,7 +289,7 @@
         entity.lineColor = UIColorFromRGB(0x8FB5EC);
         entity.thickness = 0.5f;
         entity.lineType = KYBChartLineType_TS;
-        entity.fillColor = UIColorFromRGB(0xF5F7FA);
+        entity.fillColor = UIColorFromRGBAndAlpha(0xF5F7FA,0.8f);
         [drawEnitiyArray addObject:entity];
     }
     self.controlBarChart.lineArrayForDraw = [NSMutableArray arrayWithObject:drawEnitiyArray];
@@ -289,6 +391,7 @@
         }
         NSArray *dataArray = line.dataArray;
         NSMutableArray *drawEnitiyArray = [NSMutableArray array];
+        NSMutableArray *selectedPointArray = [NSMutableArray array];
         for (int i = 0; i < dataArray.count - 1; i ++) {
             TSMAEntity *entity1 = dataArray[i];
             TSMAEntity *entity2 = dataArray[i + 1];
@@ -307,14 +410,23 @@
             entity.thickness = line.thickness;
             entity.lineType = line.type;
             [drawEnitiyArray addObject:entity];
-//            if (line == _chartLineArray.firstObject) {//基准线
-//                [pointArrayForSelect addObject:[[NSValue alloc] initWithBytes:&startPoint objCType:@encode(CGPoint)]];
-//                if (i == line.dataArray.count - 2) {
-//                    [pointArrayForSelect addObject:[[NSValue alloc] initWithBytes:&endPoint objCType:@encode(CGPoint)]];
-//                }
-//            }
+            
+            PointForSelectEntity *pointForSelect = [[PointForSelectEntity alloc] init];
+            pointForSelect.point = startPoint;
+            pointForSelect.available = YES;
+            pointForSelect.line = line;
+            [selectedPointArray addObject:pointForSelect];
+            if (i == dataArray.count - 2) {
+                PointForSelectEntity *pointForSelect1 = [[PointForSelectEntity alloc] init];
+                pointForSelect1.point = endPoint;
+                pointForSelect1.available = YES;
+                pointForSelect1.line = line;
+                [selectedPointArray addObject:pointForSelect1];
+            }
+
         }
         [lineArrayForDraw addObject:drawEnitiyArray];
+        line.selectedPointArray = selectedPointArray;
     }
     self.portfolioChart.lineArrayForDraw = lineArrayForDraw;
     [self.portfolioChart setNeedsDisplay];
@@ -339,7 +451,37 @@
     [self createLineForDraw];
 }
 
+#pragma mark getter and setter
+-(UIView *)floatDataView{
+    if (!_floatDataView) {
+        _floatDataView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 130, 40)];
+        _floatDataView.backgroundColor = [UIColor colorWithWhite:1 alpha:0.8f];
+        _floatDataView.layer.borderWidth = 0.5f;
+        _floatDataView.layer.borderColor = UIColorFromRGB(0x8FB5EC).CGColor;
+        _floatDataView.layer.cornerRadius = 2.0f;
+        _floatDataView.hidden = YES;
+        
+        _dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 0, _floatDataView.frame.size.width - 10, _floatDataView.frame.size.height/3)];
+        _dateLabel.backgroundColor = [UIColor clearColor];
+        _dateLabel.font = [UIFont systemFontOfSize:8];
+        [_floatDataView addSubview:_dateLabel];
+        
+        _code300Label = [[UILabel alloc] initWithFrame:CGRectMake(5, _floatDataView.frame.size.height/3, _floatDataView.frame.size.width - 10, _floatDataView.frame.size.height/3)];
+        _code300Label.backgroundColor = [UIColor clearColor];
+        _code300Label.font = [UIFont systemFontOfSize:8];
+        [_floatDataView addSubview:_code300Label];
+        
+        _balanceLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, _floatDataView.frame.size.height * 2 / 3, _floatDataView.frame.size.width - 10, _floatDataView.frame.size.height/3)];
+        _balanceLabel.backgroundColor = [UIColor clearColor];
+        _balanceLabel.font = [UIFont systemFontOfSize:8];
+        [_floatDataView addSubview:_balanceLabel];
+    }
+    return _floatDataView;
+}
+
 @end
+
+
 
 @implementation DayValueObject
 

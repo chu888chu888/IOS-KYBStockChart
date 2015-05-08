@@ -72,6 +72,8 @@
 //获得距离触点最近的坐标位置
 -(CGPoint)closePointWithTouchPoint:(CGPoint)touchPoint;
 
+-(NSInteger)closeIndexWithTouchPoint:(CGPoint)touchPoint;
+
 -(void)refresh;//刷新
 
 @end

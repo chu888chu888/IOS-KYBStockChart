@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "KCandleEnitity.h"
 #import "TSMAEntity.h"
+#import "PointForSelectEntity.h"
 
 typedef enum{
     KYBChartLineType_MA = 0,//均线
@@ -25,6 +26,8 @@ typedef enum{
 @property (nonatomic,assign)CGFloat thickness;//粗细
 
 @property (nonatomic,strong)NSArray *dataArray;//数据源
+
+@property (nonatomic,strong)NSArray *selectedPointArray;//PointForSelectEntity
 
 @property (nonatomic,assign)NSInteger totalPointCount;//图表上点总个数 （不一定与dataArray个数相等）
 

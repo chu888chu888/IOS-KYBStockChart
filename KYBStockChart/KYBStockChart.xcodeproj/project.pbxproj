@@ -11,6 +11,7 @@
 		B133B1C51AFA097400F7536C /* code300.json in Resources */ = {isa = PBXBuildFile; fileRef = B133B1C41AFA097400F7536C /* code300.json */; };
 		B133B1C71AFA09CC00F7536C /* detail_count.json in Resources */ = {isa = PBXBuildFile; fileRef = B133B1C61AFA09CC00F7536C /* detail_count.json */; };
 		B137A11E1AFB630200BE78E4 /* KYBChartReferenceView.m in Sources */ = {isa = PBXBuildFile; fileRef = B137A11D1AFB630200BE78E4 /* KYBChartReferenceView.m */; };
+		B137A1221AFC63C600BE78E4 /* PointForSelectEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = B137A1211AFC63C600BE78E4 /* PointForSelectEntity.m */; };
 		B1D6FA8F1AEE4886004F45BE /* KCandleForDrawEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D6FA8C1AEE4886004F45BE /* KCandleForDrawEntity.m */; };
 		B1D6FA901AEE4886004F45BE /* LineForDrawEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D6FA8E1AEE4886004F45BE /* LineForDrawEntity.m */; };
 		B1D6FABD1AEE4B36004F45BE /* example.png in Resources */ = {isa = PBXBuildFile; fileRef = B1D6FABC1AEE4B36004F45BE /* example.png */; };
@@ -55,6 +56,8 @@
 		B133B1C61AFA09CC00F7536C /* detail_count.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = detail_count.json; sourceTree = "<group>"; };
 		B137A11C1AFB630200BE78E4 /* KYBChartReferenceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KYBChartReferenceView.h; sourceTree = "<group>"; };
 		B137A11D1AFB630200BE78E4 /* KYBChartReferenceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KYBChartReferenceView.m; sourceTree = "<group>"; };
+		B137A1201AFC63C600BE78E4 /* PointForSelectEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PointForSelectEntity.h; sourceTree = "<group>"; };
+		B137A1211AFC63C600BE78E4 /* PointForSelectEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PointForSelectEntity.m; sourceTree = "<group>"; };
 		B1D6FA8B1AEE4886004F45BE /* KCandleForDrawEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCandleForDrawEntity.h; sourceTree = "<group>"; };
 		B1D6FA8C1AEE4886004F45BE /* KCandleForDrawEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCandleForDrawEntity.m; sourceTree = "<group>"; };
 		B1D6FA8D1AEE4886004F45BE /* LineForDrawEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineForDrawEntity.h; sourceTree = "<group>"; };
@@ -132,6 +135,15 @@
 				B137A11D1AFB630200BE78E4 /* KYBChartReferenceView.m */,
 			);
 			name = ReferenceView;
+			sourceTree = "<group>";
+		};
+		B137A11F1AFC639100BE78E4 /* EnitityForSelect */ = {
+			isa = PBXGroup;
+			children = (
+				B137A1201AFC63C600BE78E4 /* PointForSelectEntity.h */,
+				B137A1211AFC63C600BE78E4 /* PointForSelectEntity.m */,
+			);
+			path = EnitityForSelect;
 			sourceTree = "<group>";
 		};
 		B1D6FA8A1AEE4886004F45BE /* Draw */ = {
@@ -277,6 +289,7 @@
 		FD4963AC1AE3F6B100C7E21F /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				B137A11F1AFC639100BE78E4 /* EnitityForSelect */,
 				B1D6FA8A1AEE4886004F45BE /* Draw */,
 				FD4963AD1AE3F6B100C7E21F /* KCandleEnitity.h */,
 				FD4963AE1AE3F6B100C7E21F /* KCandleEnitity.m */,
@@ -413,6 +426,7 @@
 				FD1E90141AE5439300BFAC7E /* README.md in Sources */,
 				FD49637B1AE3F66300C7E21F /* AppDelegate.m in Sources */,
 				FD4963781AE3F66300C7E21F /* main.m in Sources */,
+				B137A1221AFC63C600BE78E4 /* PointForSelectEntity.m in Sources */,
 				B1D6FB851AF73FB0004F45BE /* KYBBaseChart.m in Sources */,
 				B1FB25031AFAFDA900E09C42 /* KYBChartControlBar.m in Sources */,
 				FD4963B61AE3F6B100C7E21F /* KYBStockVolumeChart.m in Sources */,

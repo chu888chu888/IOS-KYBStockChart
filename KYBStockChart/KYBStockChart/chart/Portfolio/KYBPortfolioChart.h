@@ -38,4 +38,3 @@
 @property (nonatomic,assign) CGFloat detailCountValue;
 
 @end
-
